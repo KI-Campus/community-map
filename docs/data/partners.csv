@@ -1,10 +1,10 @@
 name,city,category,lat,lon,partner_since,person,study_track
 Stifterverband,Berlin,Konsortialpartner,52.52,13.405,2019-11-01,,
-Neocosmo,Saarbrücken,Konsortialpartner,49.238,6.997000000000001,2019-11-01,,
-FernUniversität in Hagen,Hagen,Konsortialpartner,51.367,7.462999999999999,2023-01-01,,
+Neocosmo,Saarbrücken,Konsortialpartner,49.238,6.997,2019-11-01,,
+FernUniversität in Hagen,Hagen,Konsortialpartner,51.367,7.463,2023-01-01,,
 Hasso-Plattner-Institut,Potsdam,Konsortialpartner,,,2019-11-01,,
 RWTH Aachen,Aachen,Fellowship,,,2020-10-01,Florian Wellmann,Geographie
-DHBW Heilbronn,Heilbronn,Konsortialpartner,49.141999999999996,9.211,2023-01-01,,
+DHBW Heilbronn,Heilbronn,Konsortialpartner,49.142,9.211,2023-01-01,,
 Hochschule München,München,Fellowship,,,2020-10-01,Peter Schmidt,"Wirtschaftswissenschaften, Politik"
 Universität Luxemburg,Luxemburg,Lernangebot,,,2020-04-01,,
 HU Berlin,Berlin,Lernangebot,,,2020-04-01,,
