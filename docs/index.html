@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta name="description" content="Some interactive maps made with D3.js">
+    <meta name="author" content="Cornelia Gamst">
+
+    <meta property="og:title" content="Maps with D3.js">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://gamst.github.io/d3-maps">
+    <meta property="og:description" content="Some interactive maps made with D3.js">
+    <!-- <meta property="og:image" content="/warnstreik-gew/image.jpg">
+
+    <link rel="icon" type="image/png" href="/warnstreik-gew/strike.png"> -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>D3 Maps</title>
+
+    <style>
+      path {
+        stroke: white;
+        stroke-width: 0.5px;
+        fill: #3A2A78;
+      }
+      path:hover {
+        fill: #6c609a;
+      }
+      svg {
+        border: 2px solid #000;
+        border-radius: 5px;
+      }
+    </style>
+
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/topojson.v0.min.js"></script>
+  </head>
+
+  <body>
+    <script type="text/javascript">
+      var width = 900;
+      var height = 700;
+
+      var svg = d3.select("body").append("svg")
+          .attr("width", width)
+          .attr("height", height);
+
+      var tooltip = d3.select("body").append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .style("background", "#EAF4F8")
+        .text("a simple tooltip");
+
+      var cities=[
+  		  {"code":"BER", "city":"Berlin", "country":"Germany", "lat":52.52, "lon":13.405},
+  		  {"code":"HGN", "city":"Hagen", "country":"Germany", "lat":51.367, "lon":7.463},
+  		  {"code":"SAA", "city":"Saarbrücken", "country":"Germany", "lat":49.238, "lon":6.997},
+  		  {"code":"HLB", "city":"Heilbronn", "country":"Germany", "lat":49.142, "lon":9.211}
+	    ];
+
+      //changing the projection from mercator to albers
+      var projection = d3.geo.albers()
+      		.center([11,50.7])
+      		.rotate([0,0])
+      		.parallels([50,10])
+      		.scale(4000)
+      		.translate([width/2,height/2]);
+
+      var path = d3.geo.path()
+          .projection(projection);
+
+      var g = svg.append("g");
+      
+      d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json", function(error, topology) {
+          g.selectAll("path")
+            .data(topojson.object(topology, topology.objects.DEU_adm2)
+                .geometries)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .attr('fill','gray')
+
+          // add city location circles
+		      var locations = g.selectAll("circle")
+			       .data(cities)
+			       .enter()
+			       .append("circle")
+			       .attr("cx", function(d) {return projection([d.lon, d.lat])[0];})
+			       .attr("cy", function(d) {return projection([d.lon, d.lat])[1];})
+			       .attr("r", 5)
+			       .style("fill", "#17a468")
+			       .style("opacity", 0.6)
+             .on('mouseover', function(d){
+               d3.select(this).style('fill', '#EAF4F8');
+               tooltip.text(d.city);
+               return tooltip.style("visibility", "visible");})
+             .on('mouseout', function(){d3.select(this).style('fill', '#17a468');return tooltip.style("visibility", "hidden");})
+             .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+      });
+    
+      //zoom and pan functionality
+		  var zoom = d3.behavior.zoom()
+        .scaleExtent([1,6])
+        .on("zoom",function() {
+        	g.attr("transform","translate("+ d3.event.translate.join(",")+")scale("+d3.event.scale+")");
+        	g.selectAll("path")  
+            .attr("d", path.projection(projection)); 
+  		  });
+		  svg.call(zoom);
+
+
+    </script>
+  </body>
+</html>
