@@ -13,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.3.1/papaparse.min.js"></script>
   <!-- <meta property="og:image" content="/warnstreik-gew/image.jpg">
 
     <link rel="icon" type="image/png" href="/warnstreik-gew/strike.png"> -->
@@ -125,6 +126,18 @@
       }
     }
 
+    function getDotColor(category) {
+      let result = "";
+      if (category === "Konsortialpartner" || category === "Nutzungspartner") {
+        result = "blue";
+      } else if (category === "Fellowship") {
+        result = "green";
+      } else if (category === "Lernangebot") {
+        result = "white";
+      }
+      return result;
+    }
+
     var width = 900;
     var height = 700;
 
@@ -140,53 +153,6 @@
       .attr("class", "tooltip")
       .on('mouseleave', function () { return tooltip.style("display", "none"); });
 
-    var cities = [
-      {
-        code: "BER",
-        city: "Berlin",
-        institutions: ["Stifterverband", "HU Berlin"],
-        country: "Germany",
-        lat: 52.52,
-        lon: 13.405,
-        person: "person 1",
-        study_track: "study 1",
-        category: "Konsortialpartner"
-      },
-      {
-        code: "HGN",
-        city: "Hagen",
-        institutions: ["FernUniversit√§t in Hagen"],
-        country: "Germany",
-        lat: 51.367,
-        lon: 7.463,
-        person: "person 2",
-        study_track: "study 2",
-        category: "Lernangebot"
-      },
-      {
-        code: "SAA",
-        city: "Saarbrücken",
-        institutions: ["Neocosmo"],
-        country: "Germany",
-        lat: 49.42,
-        lon: 6.997,
-        person: "person 3",
-        study_track: "study 3",
-        category: "Fellowship"
-      },
-      {
-        code: "HLB",
-        city: "Heilbronn",
-        institutions: ["DHBW Heilbronn"],
-        country: "Germany",
-        lat: 49.142,
-        lon: 9.211,
-        person: "person 4",
-        study_track: "study 4",
-        category: "Nutzungspartner"
-      }
-    ];
-
     //changing the projection from mercator to albers
     var projection = d3.geo.albers()
       .center([11, 50.7])
@@ -200,51 +166,45 @@
 
     var g = svg.append("g");
 
-    d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json", function (error, topology) {
-      g.selectAll("path")
-        .data(topojson.object(topology, topology.objects.DEU_adm2)
-          .geometries)
-        .enter()
-        .append("path")
-        .attr("d", path)
-        .attr('fill', 'gray')
+    function addCityLocations(cities) {
+      d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json", function (error, topology) {
+        g.selectAll("path")
+          .data(topojson.object(topology, topology.objects.DEU_adm2)
+            .geometries)
+          .enter()
+          .append("path")
+          .attr("d", path)
+          .attr('fill', 'gray');
 
-      // add city location circles
-      var locations = g.selectAll("circle")
-        .data(cities)
-        .enter()
-        .append("circle")
-        .attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
-        .attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
-        .attr("r", 5)
-        .style("fill", "#17a468")
-        .style("opacity", 0.6)
-        .on('mouseover', function (d) {
-          tooltipIsVisible = true;
-          d3.select(this).style('fill', '#EAF4F8');
-          let category = "";
-          if (d.category === "Konsortialpartner" || d.category === "Nutzungspartner") {
-            category = "blue";
-          } else if (d.category === "Fellowship") {
-            category = "green";
-          } else if (d.category === "Lernangebot") {
-            category = "white";
-          }
-          const city = `<div class="city">${d.city}</div>`;
-          const institutions = d.institutions.map((institution) => `
+        // add city location circles
+        g.selectAll("circle")
+          .data(Object.values(cities))
+          .enter()
+          .append("circle")
+          .attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
+          .attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
+          .attr("r", 5)
+          .style("fill", "#17a468")
+          .style("opacity", 0.6)
+          .on('mouseover', function (d) {
+            d3.select(this).style('fill', '#EAF4F8');
+            const city = `<div class="city">${d.city}</div>`;
+            const institutions = d.institutions.map((institution) => `
                 <button class="accordion" onclick="showInformation(this)">
-                  <div class="dot ${category}"></div>${institution}
+                  <div class="dot ${getDotColor(institution.category)}"></div>${institution.name}
                 </button>
                 <div class="panel">
-                  <p>Person: ${d.person}</p>
-                  <p>Study track: ${d.study_track}</p>
+                  <p>Person: ${institution.person}</p>
+                  <p>Study track: ${institution.studyTrack}</p>
                 </div>
               `).join('');
-          tooltip.html(city + institutions);
-          tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px")
-          return tooltip.style("display", "block");
-        })
-    });
+            tooltip.html(city + institutions);
+            tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px")
+            return tooltip.style("display", "block");
+          })
+          .on('mouseleave', function () { return d3.select(this).style('fill', '#17a468'); });
+      });
+    }
 
     //zoom and pan functionality
     var zoom = d3.behavior.zoom()
@@ -256,7 +216,36 @@
       });
     svg.call(zoom);
 
+    d3.csv("../data/partners.csv", function (data) {
+      let parsedData = {};
 
+      for (var i = 0; i < data.length; i++) {
+        if (parsedData[data[i].city] === undefined) {
+          parsedData[data[i].city] = {
+            city: data[i].city,
+            lat: data[i].lat,
+            lon: data[i].lon
+          };
+        }
+        if (parsedData[data[i].city]['institutions'] === undefined) {
+          parsedData[data[i].city]['institutions'] = [{
+            name: data[i].name,
+            category: data[i].category,
+            person: data[i].person,
+            studyTrack: data[i].study_track
+          }]
+        } else {
+          parsedData[data[i].city]['institutions'].push({
+            name: data[i].name,
+            category: data[i].category,
+            person: data[i].person,
+            studyTrack: data[i].study_track
+          });
+        }
+      }
+
+      addCityLocations(parsedData);
+    });
   </script>
 </body>
 
