@@ -26,7 +26,14 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      font-size: 14px;
+      margin: 0;
+      padding: 0;
+    }
+
+    #map-container {
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
     }
 
     path {
@@ -39,14 +46,14 @@
       fill: #6c609a;
     }
 
-    svg {
-      border: 2px solid #000;
-      border-radius: 5px;
+    .tooltip {
+      width: 230px;
     }
 
     .city {
       font-weight: bold;
       padding: 10px;
+      font-size: 14px;
     }
 
     .accordion {
@@ -60,6 +67,7 @@
       transition: 0.4s;
       border-top: 1px solid grey;
       padding: 10px;
+      font-size: 14px;
     }
 
     .active,
@@ -73,8 +81,8 @@
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.2s ease-out;
-      font-size: 13px;
       color: #444;
+      font-size: 14px;
     }
 
     .accordion:after {
@@ -108,6 +116,65 @@
     .white {
       background-color: white;
     }
+
+    @media (max-width: 1000px) {
+      .city {
+        font-size: 12px;
+      }
+
+      .accordion {
+        font-size: 12px;
+      }
+
+      .panel {
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .tooltip {
+        width: 140px;
+      }
+
+      .dot {
+        width: 6px;
+        height: 6px;
+      }
+
+      .tooltip {
+        width: 160px;
+      }
+
+      .city {
+        font-size: 10px;
+      }
+
+      .accordion {
+        font-size: 10px;
+      }
+
+      .panel {
+        font-size: 10px;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .tooltip {
+        width: 135px;
+      }
+
+      .city {
+        font-size: 8px;
+      }
+
+      .accordion {
+        font-size: 8px;
+      }
+
+      .panel {
+        font-size: 8px;
+      }
+    }
   </style>
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
@@ -115,7 +182,18 @@
 </head>
 
 <body>
+  <div id="map-container"></div>
+
   <script type="text/javascript">
+    var width = null;
+    var height = null
+    var scale = 0;
+    var svg = null
+    var tooltip = null;
+    var projection = null;
+    var path = null;
+    var g = null;
+
     function showInformation(element) {
       element.classList.toggle("active");
       var panel = element.nextElementSibling;
@@ -138,33 +216,60 @@
       return result;
     }
 
-    var width = 900;
-    var height = 700;
+    function drawMap() {
+      width = document.getElementById("map-container").getBoundingClientRect().width;
+      height = document.getElementById("map-container").getBoundingClientRect().height;
+      scale = 0;
 
-    var svg = d3.select("body").append("svg")
-      .attr("width", width)
-      .attr("height", height);
+      if (width < 450) {
+        scale = 2100;
+      } else if (width < 600) {
+        scale = 2400;
+      } else if (width < 1000) {
+        scale = 3500;
+      } else if (width < 1500) {
+        scale = 5000;
+      } else if (width < 2000) {
+        scale = 6000;
+      }
 
-    var tooltip = d3.select("body").append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("display", "none")
-      .style("background", "#EAF4F8")
-      .attr("class", "tooltip")
-      .on('mouseleave', function () { return tooltip.style("display", "none"); });
+      d3.select("#map-container").html("");
 
-    //changing the projection from mercator to albers
-    var projection = d3.geo.albers()
-      .center([11, 50.7])
-      .rotate([0, 0])
-      .parallels([50, 10])
-      .scale(4000)
-      .translate([width / 2, height / 2]);
+      svg = d3.select("#map-container").append("svg")
+        .attr("width", width)
+        .attr("height", height);
 
-    var path = d3.geo.path()
-      .projection(projection);
+      tooltip = d3.select("body").append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("display", "none")
+        .style("background", "#EAF4F8")
+        .attr("class", "tooltip")
+        .on('mouseleave', function () { return tooltip.style("display", "none"); });
 
-    var g = svg.append("g");
+      //changing the projection from mercator to albers
+      projection = d3.geo.albers()
+        .center([10.42, 50.7])
+        .rotate([0, 0])
+        .parallels([50, 10])
+        .scale(scale)
+        .translate([width / 2, height / 2]);
+
+      path = d3.geo.path()
+        .projection(projection);
+
+      g = svg.append("g");
+
+      //zoom and pan functionality
+      var zoom = d3.behavior.zoom()
+        .scaleExtent([1, 6])
+        .on("zoom", function () {
+          g.attr("transform", "translate(" + d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
+          g.selectAll("path")
+            .attr("d", path.projection(projection));
+        });
+      svg.call(zoom);
+    }
 
     function addCityLocations(cities) {
       d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json", function (error, topology) {
@@ -206,45 +311,46 @@
       });
     }
 
-    //zoom and pan functionality
-    var zoom = d3.behavior.zoom()
-      .scaleExtent([1, 6])
-      .on("zoom", function () {
-        g.attr("transform", "translate(" + d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
-        g.selectAll("path")
-          .attr("d", path.projection(projection));
+    function generateMap() {
+      d3.csv("./data/partners.csv", function (data) {
+        let parsedData = {};
+
+        for (var i = 0; i < data.length; i++) {
+          if (parsedData[data[i].city] === undefined) {
+            parsedData[data[i].city] = {
+              city: data[i].city,
+              lat: data[i].lat,
+              lon: data[i].lon
+            };
+          }
+          if (parsedData[data[i].city]['institutions'] === undefined) {
+            parsedData[data[i].city]['institutions'] = [{
+              name: data[i].name,
+              category: data[i].category,
+              person: data[i].person,
+              studyTrack: data[i].study_track
+            }]
+          } else {
+            parsedData[data[i].city]['institutions'].push({
+              name: data[i].name,
+              category: data[i].category,
+              person: data[i].person,
+              studyTrack: data[i].study_track
+            });
+          }
+        }
+
+        drawMap();
+        addCityLocations(parsedData);
       });
-    svg.call(zoom);
+    }
 
-    d3.csv("./data/partners.csv", function (data) {
-      let parsedData = {};
+    window.addEventListener("resize", function () {
+      generateMap();
+    });
 
-      for (var i = 0; i < data.length; i++) {
-        if (parsedData[data[i].city] === undefined) {
-          parsedData[data[i].city] = {
-            city: data[i].city,
-            lat: data[i].lat,
-            lon: data[i].lon
-          };
-        }
-        if (parsedData[data[i].city]['institutions'] === undefined) {
-          parsedData[data[i].city]['institutions'] = [{
-            name: data[i].name,
-            category: data[i].category,
-            person: data[i].person,
-            studyTrack: data[i].study_track
-          }]
-        } else {
-          parsedData[data[i].city]['institutions'].push({
-            name: data[i].name,
-            category: data[i].category,
-            person: data[i].person,
-            studyTrack: data[i].study_track
-          });
-        }
-      }
-
-      addCityLocations(parsedData);
+    window.addEventListener("load", function () {
+      generateMap();
     });
   </script>
 </body>
