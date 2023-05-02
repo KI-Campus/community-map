@@ -28,9 +28,6 @@
       font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0;
-    }
-
-    #map-container {
       width: 100vw;
       height: 100vh;
       box-sizing: border-box;
@@ -178,12 +175,9 @@
   </style>
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
-  <script src="https://d3js.org/topojson.v0.min.js"></script>
 </head>
 
 <body>
-  <div id="map-container"></div>
-
   <script type="text/javascript">
     var width = null;
     var height = null
@@ -217,8 +211,8 @@
     }
 
     function drawMap() {
-      width = document.getElementById("map-container").getBoundingClientRect().width;
-      height = document.getElementById("map-container").getBoundingClientRect().height;
+      width = document.body.getBoundingClientRect().width;
+      height = document.body.getBoundingClientRect().height;
       scale = 0;
 
       if (width < 450) {
@@ -233,9 +227,9 @@
         scale = 6000;
       }
 
-      d3.select("#map-container").html("");
+      d3.select("body").html("");
 
-      svg = d3.select("#map-container").append("svg")
+      svg = d3.select("body").append("svg")
         .attr("width", width)
         .attr("height", height);
 
@@ -263,19 +257,14 @@
       //zoom and pan functionality
       var zoom = d3.behavior.zoom()
         .scaleExtent([1, 6])
-        .on("zoom", function () {
-          g.attr("transform", "translate(" + d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
-          g.selectAll("path")
-            .attr("d", path.projection(projection));
-        });
+        .on("zoom", function () { });
       svg.call(zoom);
     }
 
     function addCityLocations(cities) {
-      d3.json("https://raw.githubusercontent.com/deldersveld/topojson/master/countries/germany/germany-regions.json", function (error, topology) {
+      d3.json("./data/3_mittel.geo.json", function (geojson) {
         g.selectAll("path")
-          .data(topojson.object(topology, topology.objects.DEU_adm2)
-            .geometries)
+          .data(geojson.features)
           .enter()
           .append("path")
           .attr("d", path)
