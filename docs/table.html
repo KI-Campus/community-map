@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Table</title>
+
+  <style>
+    table {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 80%;
+      margin: auto;
+      font-size: 18px;
+      margin-top: 3%;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    .table-item {
+      background-color: #ddf9f9;
+    }
+  </style>
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    d3.csv("./data/partners.csv", function (data) {
+      let parsedData = {};
+
+      for (var i = 0; i < data.length; i++) {
+        if (parsedData[data[i].city] === undefined) {
+          parsedData[data[i].city] = {
+            city: data[i].city,
+            lat: data[i].lat,
+            lon: data[i].lon
+          };
+        }
+        if (parsedData[data[i].city]['institutions'] === undefined) {
+          parsedData[data[i].city]['institutions'] = [{
+            name: data[i].name,
+            category: data[i].category,
+            partnerSince: data[i].partner_since,
+            person: data[i].person,
+            studyTrack: data[i].study_track
+          }]
+        } else {
+          parsedData[data[i].city]['institutions'].push({
+            name: data[i].name,
+            category: data[i].category,
+            partnerSince: data[i].partner_since,
+            person: data[i].person,
+            studyTrack: data[i].study_track
+          });
+        }
+      }
+
+      const table = document.createElement('table');
+
+      for (var i = 0; i < Object.keys(parsedData).length; i++) {
+        const cityNameTableRow = document.createElement('tr');
+        cityNameTableRow.innerHTML = `<td colspan="5">${Object.values(parsedData)[i].city}</td>`;
+        cityNameTableRow.style.backgroundColor = "grey";
+        cityNameTableRow.style.color = "white";
+        table.appendChild(cityNameTableRow);
+        for (var j = 0; j < Object.values(parsedData)[i].institutions.length; j++) {
+          const institutionTableRow = document.createElement('tr');
+          institutionTableRow.innerHTML = `
+              <td class="table-item">${Object.values(parsedData)[i].institutions[j].name}</td>
+              <td class="table-item">${Object.values(parsedData)[i].institutions[j].category}</td>
+              <td class="table-item">${Object.values(parsedData)[i].institutions[j].partnerSince}</td>
+              <td class="table-item">${Object.values(parsedData)[i].institutions[j].person}</td>
+              <td class="table-item">${Object.values(parsedData)[i].institutions[j].studyTrack}</td>
+            `;
+          table.appendChild(institutionTableRow);
+        }
+      }
+
+      document.body.appendChild(table);
+    });
+  </script>
+</body>
+
+</html>
