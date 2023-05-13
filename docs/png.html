@@ -28,6 +28,7 @@
       width: 100vw;
       height: 100vh;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
     #map-image {
@@ -105,6 +106,14 @@
         scale = 6000;
       }
 
+      if (height <= 400) {
+        scale = 2500;
+      } else if (height < 700) {
+        scale = 3000;
+      } else if (height <= 800) {
+        scale = 3500;
+      }
+
       d3.select("body").html(
         "<button id='download-btn'>Download</button><img src='' alt='map' id='map-image'>"
       );
@@ -149,7 +158,7 @@
             .enter()
             .append("path")
             .attr("d", path)
-            .attr('stroke', 'white')
+            .attr('stroke', '#FFFFFF')
             .attr('stroke-width', '0.5px')
             .attr('fill', '#3A2A78');
 
