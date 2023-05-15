@@ -15,7 +15,7 @@
     }
 
     td {
-      border: 1px solid black;
+      border: 1px solid #000000;
       padding: 5px;
     }
 
@@ -29,32 +29,34 @@
 
 <body>
   <script type="text/javascript">
+    // This object defines the font color and background color of different categories.
+    // We can add more categories in this object and the implementation will still work.
+    var categories = {
+      "Partner": { fontColor: '#FFFFFF', backgroundColor: '#1AA469' },
+      "Lehr-Fellowship": { fontColor: '#FFFFFF', backgroundColor: '#2891ba' },
+      "KI-Campus-Original": { fontColor: '#000000', backgroundColor: '#eaf4f8' }
+    };
+
     d3.csv("./data/partners.csv", function (data) {
       let parsedData = {};
 
       for (var i = 0; i < data.length; i++) {
         if (parsedData[data[i].city] === undefined) {
           parsedData[data[i].city] = {
-            city: data[i].city,
-            lat: data[i].lat,
-            lon: data[i].lon
+            city: data[i].city || ''
           };
         }
         if (parsedData[data[i].city]['institutions'] === undefined) {
           parsedData[data[i].city]['institutions'] = [{
-            name: data[i].name,
-            category: data[i].category,
-            partnerSince: data[i].partner_since,
-            person: data[i].person,
-            studyTrack: data[i].study_track
+            name: data[i].name || '',
+            category: data[i].category || '',
+            partnerSince: data[i].partner_since || ''
           }]
         } else {
           parsedData[data[i].city]['institutions'].push({
-            name: data[i].name,
-            category: data[i].category,
-            partnerSince: data[i].partner_since,
-            person: data[i].person,
-            studyTrack: data[i].study_track
+            name: data[i].name || '',
+            category: data[i].category || '',
+            partnerSince: data[i].partner_since || ''
           });
         }
       }
@@ -64,17 +66,36 @@
       for (var i = 0; i < Object.keys(parsedData).length; i++) {
         const cityNameTableRow = document.createElement('tr');
         cityNameTableRow.innerHTML = `<td colspan="5">${Object.values(parsedData)[i].city}</td>`;
-        cityNameTableRow.style.backgroundColor = "grey";
-        cityNameTableRow.style.color = "white";
+        cityNameTableRow.style.backgroundColor = "rgb(243, 146, 0)";
+        cityNameTableRow.style.color = "#FFFFFF";
         table.appendChild(cityNameTableRow);
-        for (var j = 0; j < Object.values(parsedData)[i].institutions.length; j++) {
+        let institutions = Object.values(parsedData)[i].institutions;
+        for (var j = 0; j < institutions.length; j++) {
           const institutionTableRow = document.createElement('tr');
+          const backgroundColor = categories[institutions[j].category.trim()]?.backgroundColor || '#000000';
+          const fontColor = categories[institutions[j].category.trim()]?.fontColor || '#FFFFFF';
           institutionTableRow.innerHTML = `
-              <td class="table-item">${Object.values(parsedData)[i].institutions[j].name}</td>
-              <td class="table-item">${Object.values(parsedData)[i].institutions[j].category}</td>
-              <td class="table-item">${Object.values(parsedData)[i].institutions[j].partnerSince}</td>
-              <td class="table-item">${Object.values(parsedData)[i].institutions[j].person}</td>
-              <td class="table-item">${Object.values(parsedData)[i].institutions[j].studyTrack}</td>
+              <td
+                class="table-item"
+                style="
+                   background-color: ${backgroundColor}; color: ${fontColor}; padding-left: 1em; font-weight: bold
+                ">
+                  ${institutions[j].name}
+              </td>
+              <td
+                class="table-item"
+                style="
+                  background-color: ${backgroundColor}; color: ${fontColor}
+                ">
+                 ${institutions[j].category}
+              </td>
+              <td
+                class="table-item"
+                style="
+                  background-color: ${backgroundColor}; color: ${fontColor}
+                ">
+                  ${institutions[j].partnerSince}
+              </td>
             `;
           table.appendChild(institutionTableRow);
         }
