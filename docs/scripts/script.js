@@ -115,7 +115,7 @@ function drawMap() {
                 type="checkbox"
                 name="${category}"
                 ${activeCategories.includes(category) ? 'checked' : ''}
-                onclick=""
+                onclick="updateMap(this)"
               />
               <span
                 class="slider round"
@@ -203,6 +203,8 @@ function addCityLocations(cities) {
           tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px");
           if (d.institutions.length > 10) {
             tooltip.style("height", "35vh");
+          } else {
+            tooltip.style("height", "auto");
           }
           return tooltip.style("display", "block");
         })
@@ -215,6 +217,8 @@ function addCityLocations(cities) {
 
 async function loadData(activeCategories) {
   return new Promise((resolve) => {
+    parsedData = {};
+
     d3.csv("./data/partners.csv", function (data) {
       for (var i = 0; i < data.length; i++) {
         if (parsedData[data[i].city] === undefined) {
