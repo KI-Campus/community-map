@@ -51,7 +51,7 @@ function convertMaptoPNG() {
   var height = parseInt(svg.getAttribute('height'));
 
   // Increase the canvas resolution
-  var scaleFactor = 2; // Adjust this value as needed
+  var scaleFactor = 3; // Adjust this value as needed
   canvas.width = width * scaleFactor;
   canvas.height = height * scaleFactor;
   canvas.style.width = width + 'px'; // Set the displayed width of the canvas
@@ -109,7 +109,7 @@ function drawMap() {
       ${shouldGenerateAsPNG ? "<button id='download-btn'>Download</button><img src='' alt='map' id='map-image'>" : ""}
       <div class="switches">
         ${Object.keys(categories).map((category) => `
-          <div class="switch-container" style="background-color: ${categories[category].backgroundColor}">
+        <div class="switch-container">
             <label class="switch">
               <input
                 type="checkbox"
@@ -117,11 +117,10 @@ function drawMap() {
                 ${activeCategories.includes(category) ? 'checked' : ''}
                 onclick="updateMap(this)"
               />
-              <span
-                class="slider round"
-              ></span>
             </label>
-            <p class="switch-text" style="color: ${categories[category].fontColor}">${category}</p>
+            <div class="switch-container" style="background-color: ${categories[category].backgroundColor}">
+              <p class="switch-text" style="color: ${categories[category].fontColor}">${category}</p>
+            </div>
           </div>
         `).toString().replaceAll(",", "")}
       </div>
@@ -166,7 +165,7 @@ function drawMap() {
 
 function addCityLocations(cities) {
   return new Promise((resolve) => {
-    d3.json("./data/3_mittel.geo.json", function (geojson) {
+    d3.json("./data/4_niedrig.geo.json", function (geojson) {
       g.selectAll("path")
         .data(geojson.features)
         .enter()
