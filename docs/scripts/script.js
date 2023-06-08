@@ -183,7 +183,7 @@ function addCityLocations(cities) {
         .attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
         .attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
         .attr("r", 3.5)
-        .style("fill", "#17a468")
+        .style("fill", "rgb(243, 146, 0)")
         .style("opacity", 1.0)
         .on('mouseover', function (d) {
           d3.select(this).style('fill', '#EAF4F8');
@@ -207,7 +207,7 @@ function addCityLocations(cities) {
           }
           return tooltip.style("display", "block");
         })
-        .on('mouseleave', function () { return d3.select(this).style('fill', '#17a468'); });
+        .on('mouseleave', function () { return d3.select(this).style('fill', 'rgb(243, 146, 0)'); });
 
       resolve();
     });
