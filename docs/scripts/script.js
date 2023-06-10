@@ -57,7 +57,7 @@ function convertMaptoPNG() {
   canvas.style.width = width + 'px'; // Set the displayed width of the canvas
   canvas.style.height = height + 'px'; // Set the displayed height of the canvas
   ctx.scale(scaleFactor, scaleFactor); // Scale the canvas
-  
+
   var img = new Image();
   img.onload = function () {
     ctx.drawImage(img, 0, 0, width, height); // Draw the image at original size
@@ -205,6 +205,9 @@ function addCityLocations(cities) {
           } else {
             tooltip.style("height", "auto");
           }
+          if (d.institutions.length * 32 > window.innerHeight - d3.event.pageY) {
+            tooltip.style("height", `${window.innerHeight - d3.event.pageY - 50}px`);
+          }
           return tooltip.style("display", "block");
         })
         .on('mouseleave', function () { return d3.select(this).style('fill', 'rgb(243, 146, 0)'); });
@@ -259,6 +262,14 @@ async function loadData(activeCategories) {
         }
       }
 
+      parsedData = Object.keys(parsedData).sort().reduce(
+        (obj, key) => {
+          obj[key] = parsedData[key];
+          return obj;
+        },
+        {}
+      );
+
       resolve();
     });
   });
@@ -277,29 +288,44 @@ async function generateTable() {
   await loadData(activeCategories);
 
   const table = document.createElement('table');
+  let tableRow = null;
 
   for (var i = 0; i < Object.keys(parsedData).length; i++) {
-    const cityNameTableRow = document.createElement('tr');
-    cityNameTableRow.innerHTML = `<td colspan="5">${Object.values(parsedData)[i].city}</td>`;
-    cityNameTableRow.style.backgroundColor = "#fff";
-    cityNameTableRow.style.color = "#000";
-    cityNameTableRow.style.fontWeight = "bold";
-    table.appendChild(cityNameTableRow);
+    if (tableRow === null) {
+      tableRow = document.createElement('tr');
+    }
+    const tableData = document.createElement('td');
+    tableData.innerHTML = `
+        <p
+          style="
+            background-color: #fff;
+            color: #000;
+            font-weight: bold;
+            padding: 3px;
+            display: inline-block;
+            margin: 10px 0px;
+          "
+        >
+          ${Object.values(parsedData)[i].city}
+        </p>
+    `;
     let institutions = Object.values(parsedData)[i].institutions;
     for (var j = 0; j < institutions.length; j++) {
-      const institutionTableRow = document.createElement('tr');
       const backgroundColor = categories[institutions[j].category.trim()]?.backgroundColor || '#000000';
       const fontColor = categories[institutions[j].category.trim()]?.fontColor || '#FFFFFF';
-      institutionTableRow.innerHTML = `
-          <td
-            class="table-item"
-            style="
-              background-color: ${backgroundColor}; color: ${fontColor}; padding-left: 1em;
-            ">
-              ${institutions[j].name}
-          </td>
-        `;
-
+      tableData.innerHTML += `
+        <p
+          style="
+            background-color: ${backgroundColor};
+            color: ${fontColor};
+            padding: 3px;
+            margin: 5px 8px;
+            width: fit-content;
+          "
+        >
+          ${institutions[j].name}
+        </p>
+      `;
       // institutionTableRow.innerHTML += `
       //   <td
       //       class="table-item"
@@ -316,11 +342,14 @@ async function generateTable() {
       //         ${institutions[j].partnerSince}
       //     </td>
       //     `;
-      table.appendChild(institutionTableRow);
-
+    }
+    tableRow.appendChild(tableData);
+    if (i % 2 !== 0) {
+      tableRow = null;
+    } else {
+      table.appendChild(tableRow);
     }
   }
-
   document.body.appendChild(table);
 }
 
