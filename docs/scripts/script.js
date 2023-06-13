@@ -287,15 +287,28 @@ async function generateMap(activeCategories) {
 async function generateTable() {
   await loadData(activeCategories);
 
+  let totalLength = Object.values(parsedData).length * 27;
+  console.log(parsedData);
+  for (var i = 0; i < Object.values(parsedData).length; i++) {
+    totalLength += Object.values(parsedData)[i].institutions.length * 32;
+  }
+
   const table = document.createElement('table');
-  let tableRow = null;
+  let tableRow = document.createElement('tr');
+  let column1 = document.createElement('td');
+  let column2 = document.createElement('td');
+  tableRow.appendChild(column1);
+  tableRow.appendChild(column2);
+  table.appendChild(tableRow);
+  document.body.appendChild(table);
+
+  let currentColumn = column1;
+  let currentLength = 0;
+  let checkLength = true;
 
   for (var i = 0; i < Object.keys(parsedData).length; i++) {
-    if (tableRow === null) {
-      tableRow = document.createElement('tr');
-    }
-    const tableData = document.createElement('td');
-    tableData.innerHTML = `
+    currentLength += 27;
+    currentColumn.innerHTML += `
         <p
           style="
             background-color: #fff;
@@ -303,7 +316,7 @@ async function generateTable() {
             font-weight: bold;
             padding: 3px;
             display: inline-block;
-            margin: 10px 0px;
+            margin: 14px 0px;
           "
         >
           ${Object.values(parsedData)[i].city}
@@ -311,9 +324,10 @@ async function generateTable() {
     `;
     let institutions = Object.values(parsedData)[i].institutions;
     for (var j = 0; j < institutions.length; j++) {
+      currentLength += 32;
       const backgroundColor = categories[institutions[j].category.trim()]?.backgroundColor || '#000000';
       const fontColor = categories[institutions[j].category.trim()]?.fontColor || '#FFFFFF';
-      tableData.innerHTML += `
+      currentColumn.innerHTML += `
         <p
           style="
             background-color: ${backgroundColor};
@@ -326,31 +340,12 @@ async function generateTable() {
           ${institutions[j].name}
         </p>
       `;
-      // institutionTableRow.innerHTML += `
-      //   <td
-      //       class="table-item"
-      //       style="
-      //         background-color: ${backgroundColor}; color: ${fontColor}
-      //       ">
-      //        ${institutions[j].category}
-      //     </td>
-      //     <td
-      //       class="table-item"
-      //       style="
-      //         background-color: ${backgroundColor}; color: ${fontColor}
-      //       ">
-      //         ${institutions[j].partnerSince}
-      //     </td>
-      //     `;
     }
-    tableRow.appendChild(tableData);
-    if (i % 2 !== 0) {
-      tableRow = null;
-    } else {
-      table.appendChild(tableRow);
+    if (checkLength && currentLength >= totalLength / 2) {
+      currentColumn = column2;
+      checkLength = false;
     }
   }
-  document.body.appendChild(table);
 }
 
 function generateMapAsSVG() {
