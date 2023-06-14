@@ -87,7 +87,7 @@ function drawMap() {
   if (width < 450) {
     scale = 2100;
   } else if (width < 600) {
-    scale = 2800;
+    scale = 2400;
   } else if (width < 1000) {
     scale = 3500;
   } else if (width < 1500) {
@@ -99,12 +99,10 @@ function drawMap() {
   if (height <= 400) {
     scale = 2500;
   } else if (height < 700) {
-    scale = 3200;
+    scale = 3000;
   } else if (height <= 800) {
-    scale = 4000;
+    scale = 3500;
   }
-
-  
 
   d3.select("body").html(
     `
@@ -131,7 +129,15 @@ function drawMap() {
 
   svg = d3.select("body").append("svg")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+    .attr("id", "map-svg");
+
+  document.getElementById("map-svg").addEventListener("wheel", function () {
+    document.getElementById("map-svg").style.pointerEvents = "none";
+    setTimeout(() => {
+      document.getElementById("map-svg").style.pointerEvents = "auto";
+    }, 1000);
+  });
 
   tooltip = d3.select("body").append("div")
     .style("position", "absolute")
@@ -154,14 +160,10 @@ function drawMap() {
 
   g = svg.append("g");
 
-  //on scroll zoom and pan functionality 
+  //zoom and pan functionality
   var zoom = d3.behavior.zoom()
     .scaleExtent([1, 6])
-    .on("zoom", function () {
-      // g.attr("transform", "translate(" + d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
-      // g.selectAll("path")
-      //   .attr("d", path.projection(projection));
-    });
+    .on("zoom", null);
   svg.call(zoom);
 }
 
