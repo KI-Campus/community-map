@@ -195,7 +195,7 @@ function addCityLocations(cities) {
           const institutions = d.institutions.map((institution) => `
             <div
               class="institution"
-              onclick="window.location.href = '${institution.url}';"
+              onclick="window.open('${institution.url}', '_blank');"
               style="
                 background-color: ${categories[institution.category.trim()].backgroundColor}; color: ${categories[institution.category.trim()].fontColor}
               ">
