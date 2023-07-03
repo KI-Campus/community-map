@@ -1,7 +1,7 @@
 var shouldGenerateAsPNG = false;
 
-// This object defines the font color and background color of different categories.
-// We can add more categories in this object and the implementation will still work.
+// This object defines the font color and background color of different categories
+// More categories can be added here if needed
 var categories = {
   "Partner": { fontColor: '#FFFFFF', backgroundColor: '#2891ba' },
   "Lehr-Fellowship": { fontColor: '#FFFFFF', backgroundColor: '#1AA469' },
@@ -38,10 +38,72 @@ function enableDownloadButton(imgData) {
     link.click();
   };
 }
+function convertMaptoPNG() {  
+    // Select the SVG element
+    var svg = document.querySelector('svg');
+  
+    // Modify the SVG to include the legend elements
+    var legendSvg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  
+    // Add the legend
+    // Create a foreignObject to hold the switches div and its contents
+    var foreignObject = document.createElementNS('http://www.w3.org/2000/svg', 'foreignObject');
+    foreignObject.setAttribute('x', '21%'); // x position
+    foreignObject.setAttribute('y', '15%'); // y position
+    foreignObject.setAttribute('width', '300');
+    foreignObject.setAttribute('height', '200');
+  
+    // Create a div to hold the switches div
+    var div = document.createElement('div');
+    div.setAttribute('class', 'switches');
+  
+    for (var category in categories) {
+      // switchContainer style
+      var switchContainer = document.createElement('div');
+      switchContainer.setAttribute('class', 'switch-container');
+      switchContainer.style.backgroundColor = categories[category].backgroundColor;
+      switchContainer.style.color = categories[category].fontColor;
+      switchContainer.style.height = '23px';
+      switchContainer.style.width = 'fit-content';
+      switchContainer.style.fontWeight = 'bold';
+      switchContainer.style.display = 'flex';
+      switchContainer.style.alignItems = 'center';
+      switchContainer.style.padding = '4px 8px';
+      switchContainer.style.marginBottom = '8px';
+      switchContainer.style.width = '170px';
 
-function convertMaptoPNG() {
-  // Select the SVG element
-  var svg = document.querySelector('svg');
+      // switchText style
+      var switchText = document.createElement('p');
+      switchText.setAttribute('class', 'switch-text');
+      switchText.setAttribute('style', 'color: ' + categories[category].fontColor);
+      switchText.innerText = category;
+      switchText.innerText = category;
+      switchText.style.margin = '2px';
+      switchText.style.fontSize = '14px';
+      switchText.style.fontWeight = 'normal';
+      switchContainer.style.fontFamily = 'sans-serif';
+  
+      var label = document.createElement('label');
+      label.setAttribute('class', 'switch');
+  
+      var checkbox = document.createElement('input');
+      checkbox.setAttribute('type', 'checkbox');
+      checkbox.setAttribute('name', category);
+      checkbox.setAttribute('checked', '');
+      checkbox.setAttribute('onclick', 'updateMap(this)');
+  
+      label.appendChild(checkbox);
+      switchContainer.appendChild(label);
+      switchContainer.appendChild(switchText);
+      div.appendChild(switchContainer);
+    }
+  
+    foreignObject.appendChild(div);
+    legendSvg.appendChild(foreignObject);
+    svg.appendChild(legendSvg);
+  
+
+
 
   // Get the SVG dimensions and create a canvas element with the same dimensions
   var svgData = new XMLSerializer().serializeToString(svg);
@@ -50,6 +112,7 @@ function convertMaptoPNG() {
   var width = parseInt(svg.getAttribute('width'));
   var height = parseInt(svg.getAttribute('height'));
 
+  
   // Increase the canvas resolution
   var scaleFactor = 3; // Adjust this value as needed
   canvas.width = width * scaleFactor;
@@ -60,7 +123,7 @@ function convertMaptoPNG() {
 
   var img = new Image();
   img.onload = function () {
-    ctx.drawImage(img, 0, 0, width, height); // Draw the image at original size
+    ctx.drawImage(img, 0, 0, width, height); // Draw the image at the original size
 
     // Get the PNG data from the canvas
     var imgData = canvas.toDataURL('image/png');
@@ -75,6 +138,7 @@ function convertMaptoPNG() {
     enableDownloadButton(imgData);
     svg.style.display = 'none';
   };
+
   img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
 }
 
@@ -82,8 +146,9 @@ function convertMaptoPNG() {
 function drawMap() {
   width = document.body.getBoundingClientRect().width;
   height = document.body.getBoundingClientRect().height;
-  scale = 0;
+  scale = 0; // scale of the map, determines the size
 
+  // scale is set according to width of the browser window
   if (width < 450) {
     scale = 2100;
   } else if (width < 600) {
@@ -96,6 +161,7 @@ function drawMap() {
     scale = 6000;
   }
 
+  // scale is set according to the height of the browser window
   if (height <= 400) {
     scale = 2500;
   } else if (height < 700) {
@@ -104,9 +170,11 @@ function drawMap() {
     scale = 3500;
   }
 
+  // add checkbox 
   d3.select("body").html(
-    `
+    ` 
       ${shouldGenerateAsPNG ? "<button id='download-btn'>Download</button><img src='' alt='map' id='map-image'>" : ""}
+      ${!shouldGenerateAsPNG ? `
       <div class="switches">
         ${Object.keys(categories).map((category) => `
         <div class="switch-container">
@@ -124,6 +192,7 @@ function drawMap() {
           </div>
         `).toString().replaceAll(",", "")}
       </div>
+      ` : ""}
     `
   );
 
@@ -138,6 +207,7 @@ function drawMap() {
       document.getElementById("map-svg").style.pointerEvents = "auto";
     }, 1000);
   });
+
 
   tooltip = d3.select("body").append("div")
     .style("position", "absolute")
@@ -189,7 +259,7 @@ function addCityLocations(cities) {
         .attr("r", 3.5)
         .style("fill", "rgb(243, 146, 0)")
         .style("opacity", 1.0)
-        .on('mouseover', function (d) {
+        .on('mouseover', function (d) { // city mouseover tooltips
           d3.select(this).style('fill', '#EAF4F8');
           const city = `<div class="city">${d.city}</div>`;
           const institutions = d.institutions.map((institution) => `
@@ -251,7 +321,7 @@ async function loadData(activeCategories) {
         }
       }
 
-      // Filter the data based on active categories
+      // filter the data based on active categories
       Object.values(parsedData).forEach((data) => {
         parsedData[data.city].institutions = data.institutions.filter((institution) => activeCategories.includes(institution.category.trim()));
         if (parsedData[data.city].institutions.length === 0) {
@@ -283,6 +353,8 @@ async function generateMap(activeCategories) {
   await loadData(activeCategories);
   drawMap();
   await addCityLocations(parsedData);
+
+  // png
   if (shouldGenerateAsPNG) {
     convertMaptoPNG();
   }
@@ -291,12 +363,19 @@ async function generateMap(activeCategories) {
 async function generateTable() {
   await loadData(activeCategories);
 
-  let totalLength = Object.values(parsedData).length * 27;
-  console.log(parsedData);
+  // set lengths of city and institution box in the table
+  // necessary for calculation of where the breakpoint in the table is
+  // has to be calculated from the base length, from padding, margin top and margin bottom as specified below
+  const cityLength = 21 + 0 + 2 + 0; // in pixel
+  const institutionLength = 27 + 3 + 5 + 5; // in pixel
+
+  // calculate total length
+  let totalLength = Object.values(parsedData).length * cityLength; // in pixel
   for (var i = 0; i < Object.values(parsedData).length; i++) {
-    totalLength += Object.values(parsedData)[i].institutions.length * 32;
+    totalLength += Object.values(parsedData)[i].institutions.length * institutionLength;
   }
 
+  // set up empty table
   const table = document.createElement('table');
   let tableRow = document.createElement('tr');
   let column1 = document.createElement('td');
@@ -308,27 +387,30 @@ async function generateTable() {
 
   let currentColumn = column1;
   let currentLength = 0;
-  let checkLength = true;
+  let checkLength = true; // set this to false for displaying only one column
 
+  // loop for cities
   for (var i = 0; i < Object.keys(parsedData).length; i++) {
-    currentLength += 27;
+    currentLength += cityLength;
     currentColumn.innerHTML += `
         <p
           style="
             background-color: #fff;
             color: #000;
             font-weight: bold;
-            padding: 3px;
+            padding: 0px;
             display: inline-block;
-            margin: 14px 0px;
+            margin: 2px 0px 0px 0px;
           "
         >
           ${Object.values(parsedData)[i].city}
         </p>
     `;
     let institutions = Object.values(parsedData)[i].institutions;
+    
+    // loop for institutions
     for (var j = 0; j < institutions.length; j++) {
-      currentLength += 32;
+      currentLength += institutionLength;
       const backgroundColor = categories[institutions[j].category.trim()]?.backgroundColor || '#000000';
       const fontColor = categories[institutions[j].category.trim()]?.fontColor || '#FFFFFF';
       currentColumn.innerHTML += `
@@ -337,7 +419,7 @@ async function generateTable() {
             background-color: ${backgroundColor};
             color: ${fontColor};
             padding: 3px;
-            margin: 5px 8px;
+            margin: 5px 5px 5px 5px;
             width: fit-content;
           "
         >
@@ -345,7 +427,10 @@ async function generateTable() {
         </p>
       `;
     }
+
+    // condition for checking which column shall be populated
     if (checkLength && currentLength >= totalLength / 2) {
+      // if true, switch to second column. if not, populate first column
       currentColumn = column2;
       checkLength = false;
     }
@@ -353,8 +438,11 @@ async function generateTable() {
 }
 
 function generateMapAsSVG() {
+  // timeout to avoid bugs which arise when the window is resized (using the mouse for example)
   window.addEventListener("resize", function () {
-    generateMap(activeCategories);
+    setTimeout(() => {
+      generateMap(activeCategories);
+    }, 2000);
   });
 
   shouldGenerateAsPNG = false;
@@ -362,8 +450,11 @@ function generateMapAsSVG() {
 }
 
 function generateMapAsPNG() {
+  // timeout to avoid bugs which arise when the window is resized (using the mouse for example)
   window.addEventListener("resize", function () {
-    generateMap(activeCategories);
+    setTimeout(() => {
+      generateMap(activeCategories);
+    }, 2000);
   });
 
   shouldGenerateAsPNG = true;
