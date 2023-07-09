@@ -60,7 +60,7 @@ path:hover {
 
 @media (max-width: 450px) {
   .tooltip {
-    width: 30%;
+    width: 130px;
   }
 
   .city {
@@ -78,8 +78,8 @@ path:hover {
 
 .switches {
   position: absolute;
-  right: 65%;
-  bottom: 67%;
+  right: 5%;
+  bottom: 5%;
 }
 
 .switch-container {

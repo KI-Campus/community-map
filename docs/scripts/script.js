@@ -52,7 +52,7 @@ function convertMaptoPNG() {
     foreignObject.setAttribute('y', '15%'); // y position
     foreignObject.setAttribute('width', '300');
     foreignObject.setAttribute('height', '200');
-  
+
     // Create a div to hold the switches div
     var div = document.createElement('div');
     div.setAttribute('class', 'switches');
@@ -82,7 +82,7 @@ function convertMaptoPNG() {
       switchText.style.fontSize = '14px';
       switchText.style.fontWeight = 'normal';
       switchContainer.style.fontFamily = 'sans-serif';
-  
+      
       var label = document.createElement('label');
       label.setAttribute('class', 'switch');
   
@@ -273,7 +273,11 @@ function addCityLocations(cities) {
             </div>
           `).join('');
           tooltip.html(city + institutions);
-          tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px");
+          if (window.innerWidth - d3.event.pageX < 130){
+            tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (window.innerWidth - 150) + "px");
+          } else {
+            tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px");
+          }
           if (d.institutions.length > 10) {
             tooltip.style("height", "35vh");
           } else {
