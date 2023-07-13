@@ -34,52 +34,14 @@ path:hover {
   cursor: pointer;
 }
 
-@media (max-width: 1000px) {
-  .city {
-    font-size: 12px;
-  }
-
-  .institution {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 700px) {
-  .tooltip {
-    width: 160px;
-  }
-
-  .city {
-    font-size: 10px;
-  }
-
-  .institution {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 450px) {
-  .tooltip {
-    width: 130px;
-  }
-
-  .city {
-    font-size: 8px;
-  }
-
-  .institution {
-    font-size: 8px;
-  }
-}
-
 #map-image {
   display: none;
 }
 
 .switches {
   position: absolute;
-  right: 5%;
-  bottom: 5%;
+  right: 65%;
+  bottom: 67%;
 }
 
 .switch-container {
@@ -162,4 +124,55 @@ td {
   text-align: left;
   width: 50%;
   vertical-align: top;
+}
+
+@media (max-width: 1000px) {
+  .city {
+    font-size: 12px;
+  }
+
+  .institution {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .tooltip {
+    width: 160px;
+  }
+
+  .city {
+    font-size: 10px;
+  }
+
+  .institution {
+    font-size: 10px;
+  }
+
+  .switches {
+    right: 1%;
+    bottom: 1%;
+  }
+
+  .switch-container {
+    width: 150px;
+  }
+
+  .switch-text {
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 450px) {
+  .tooltip {
+    width: 130px;
+  }
+
+  .city {
+    font-size: 8px;
+  }
+
+  .institution {
+    font-size: 8px;
+  }
 }
