@@ -19,6 +19,7 @@ var projection = null;
 var path = null;
 var g = null;
 var parsedData = {};
+var stylesheet = null;
 
 function updateMap(element) {
   if (element.checked) {
@@ -38,7 +39,48 @@ function enableDownloadButton(imgData) {
     link.click();
   };
 }
-function convertMaptoPNG() {  
+
+function getCSSPropertiesForClass(cssInput, className) {
+  const regex = new RegExp(`\\.${className}\\s*{([^}]+)}`, 'i');
+  const match = cssInput.match(regex);
+
+  if (match && match.length > 1) {
+    const propertiesString = match[1].trim();
+    const propertiesArray = propertiesString.split(';').map(property => property.trim());
+    const properties = {};
+
+    propertiesArray.forEach(property => {
+      const [key, value] = property.split(':').map(part => part.trim());
+      if (key && value) {
+        properties[key] = value;
+      }
+    });
+
+    return properties;
+  }
+
+  return null;
+}
+
+async function loadCSS() {
+  return new Promise((resolve) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'styles/stylesheet.css', true);
+  
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        stylesheet = xhr.responseText;
+        resolve();
+      }
+    };
+  
+    xhr.send();
+  });
+}
+
+async function convertMaptoPNG() {
+    await loadCSS();
+
     // Select the SVG element
     var svg = document.querySelector('svg');
   
@@ -56,32 +98,35 @@ function convertMaptoPNG() {
     // Create a div to hold the switches div
     var div = document.createElement('div');
     div.setAttribute('class', 'switches');
+
+    const switchContainerClass = 'legend-switch-container';
+    const switchTextClass = 'legend-switch-text';
   
     for (var category in categories) {
       // switchContainer style
       var switchContainer = document.createElement('div');
-      switchContainer.setAttribute('class', 'switch-container');
+      switchContainer.setAttribute('class', switchContainerClass);
       switchContainer.style.backgroundColor = categories[category].backgroundColor;
       switchContainer.style.color = categories[category].fontColor;
-      switchContainer.style.height = '23px';
-      switchContainer.style.width = 'fit-content';
-      switchContainer.style.fontWeight = 'bold';
-      switchContainer.style.display = 'flex';
-      switchContainer.style.alignItems = 'center';
-      switchContainer.style.padding = '4px 8px';
-      switchContainer.style.marginBottom = '8px';
-      switchContainer.style.width = '170px';
 
       // switchText style
       var switchText = document.createElement('p');
-      switchText.setAttribute('class', 'switch-text');
-      switchText.setAttribute('style', 'color: ' + categories[category].fontColor);
+      switchText.setAttribute('class', switchTextClass);
+      switchText.style.color = categories[category].fontColor;
       switchText.innerText = category;
       switchText.innerText = category;
-      switchText.style.margin = '2px';
-      switchText.style.fontSize = '14px';
-      switchText.style.fontWeight = 'normal';
-      switchContainer.style.fontFamily = 'sans-serif';
+
+      // load properties from CSS file
+      const switchContainerProperties = getCSSPropertiesForClass(stylesheet, switchContainerClass);
+      const switchTextProperties = getCSSPropertiesForClass(stylesheet, switchTextClass);
+
+      Object.keys(switchContainerProperties).forEach((switchContainerProperty) => {
+        switchContainer.style.setProperty(switchContainerProperty, switchContainerProperties[switchContainerProperty]);
+      });
+
+      Object.keys(switchTextProperties).forEach((switchTextProperty) => {
+        switchText.style.setProperty(switchTextProperty, switchTextProperties[switchTextProperty]);
+      });
       
       var label = document.createElement('label');
       label.setAttribute('class', 'switch');

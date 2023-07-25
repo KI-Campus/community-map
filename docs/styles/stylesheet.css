@@ -126,6 +126,25 @@ td {
   vertical-align: top;
 }
 
+/* png checkbox*/
+.legend-switch-container {
+  height: 23px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+  width: 170px;
+  font-family: sans-serif;
+}
+
+.legend-switch-text {
+  margin: 2px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+/* mobile responsiveness */
 @media (max-width: 1000px) {
   .city {
     font-size: 12px;
