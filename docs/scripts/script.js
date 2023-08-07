@@ -20,6 +20,7 @@ var path = null;
 var g = null;
 var parsedData = {};
 var stylesheet = null;
+var zoom = null;
 
 function updateMap(element) {
   if (element.checked) {
@@ -187,6 +188,9 @@ async function convertMaptoPNG() {
   img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
 }
 
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints;
+}
 
 function drawMap() {
   width = document.body.getBoundingClientRect().width;
@@ -221,6 +225,7 @@ function drawMap() {
       ${shouldGenerateAsPNG ? "<button id='download-btn'>Download</button><img src='' alt='map' id='map-image'>" : ""}
       ${!shouldGenerateAsPNG ? `
       <div class="switches">
+        <span class="zoominSpan">CTRL+Scroll: Zoom In on Maps</span>
         ${Object.keys(categories).map((category) => `
         <div class="switch-container">
             <label class="switch">
@@ -244,15 +249,13 @@ function drawMap() {
   svg = d3.select("body").append("svg")
     .attr("width", width)
     .attr("height", height)
-    .attr("id", "map-svg");
-
-  document.getElementById("map-svg").addEventListener("wheel", function () {
-    document.getElementById("map-svg").style.pointerEvents = "none";
-    setTimeout(() => {
-      document.getElementById("map-svg").style.pointerEvents = "auto";
-    }, 1000);
-  });
-
+    .attr("id", "map-svg")
+    .on('click', function () {
+      if(!isTouchDevice()){
+        tooltip.style("display", "none");
+        svg.selectAll('circle').transition().duration(100).attr('r', 3.5);
+      }
+    })
 
   tooltip = d3.select("body").append("div")
     .style("position", "absolute")
@@ -260,7 +263,10 @@ function drawMap() {
     .style("display", "none")
     .style("background", "#FFFFFF")
     .attr("class", "tooltip")
-    .on('mouseleave', function () { return tooltip.style("display", "none"); });
+    .on('mouseleave', function () { 
+      svg.selectAll('circle').transition().duration(100).attr('r', 3.5);
+      return tooltip.style("display", "none"); 
+    });
 
   //changing the projection from mercator to albers
   projection = d3.geo.albers()
@@ -276,10 +282,14 @@ function drawMap() {
   g = svg.append("g");
 
   //zoom and pan functionality
-  var zoom = d3.behavior.zoom()
+  zoom = d3.behavior.zoom()
     .scaleExtent([1, 6])
-    .on("zoom", null);
-  svg.call(zoom);
+    .on("zoom", function (e) {
+      g.attr("transform", "translate(" + d3.event.translate.join(",") + ")scale(" + d3.event.scale + ")");
+      g.selectAll("path")
+        .attr("d", path.projection(projection));
+    });
+  // svg.call(zoom);
 }
 
 function addCityLocations(cities) {
@@ -302,10 +312,19 @@ function addCityLocations(cities) {
         .attr("cx", function (d) { return projection([d.lon, d.lat])[0]; })
         .attr("cy", function (d) { return projection([d.lon, d.lat])[1]; })
         .attr("r", 3.5)
+        .attr("stroke", "transparent")
+        .attr("stroke-width", 10)
         .style("fill", "rgb(243, 146, 0)")
         .style("opacity", 1.0)
         .on('mouseover', function (d) { // city mouseover tooltips
-          d3.select(this).style('fill', '#EAF4F8');
+          svg.selectAll('circle').transition().duration(100).attr('r', 3.5);
+
+          d3.select(this)
+            .transition()
+            .duration(100)
+            .attr('r', 7.5)
+            .style('box-shadow', '2px 2px 4px rgb(0, 0, 0,)');
+          // d3.select(this).style('fill', '#EAF4F8');
           const city = `<div class="city">${d.city}</div>`;
           const institutions = d.institutions.map((institution) => `
             <div
@@ -319,9 +338,9 @@ function addCityLocations(cities) {
           `).join('');
           tooltip.html(city + institutions);
           if (window.innerWidth - d3.event.pageX < 130){
-            tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (window.innerWidth - 150) + "px");
+            tooltip.style("top", (d3.event.pageY + 20) + "px").style("left", (window.innerWidth - 150) + "px");
           } else {
-            tooltip.style("top", (d3.event.pageY - 10) + "px").style("left", (d3.event.pageX - 3) + "px");
+            tooltip.style("top", (d3.event.pageY + 20) + "px").style("left", (d3.event.pageX - 3) + "px");
           }
           if (d.institutions.length > 10) {
             tooltip.style("height", "35vh");
@@ -333,7 +352,15 @@ function addCityLocations(cities) {
           }
           return tooltip.style("display", "block");
         })
-        .on('mouseleave', function () { return d3.select(this).style('fill', 'rgb(243, 146, 0)'); });
+        .on('mouseleave', function () {
+          if(isTouchDevice()){
+            d3.select(this)
+              .transition()
+              .duration(100)
+              .attr('r', 3.5);
+            return tooltip.style("display", "none");
+          }
+        });
 
       resolve();
     });
@@ -492,6 +519,14 @@ function generateMapAsSVG() {
     setTimeout(() => {
       generateMap(activeCategories);
     }, 2000);
+  });
+
+  // an eventlistener to watch key presses and specially for ctrl key that would be used in maps zooming
+  window.addEventListener("keydown", (e) => {
+    if(e.key === "Control") { svg.call(zoom); }
+  });
+  window.addEventListener("keyup", (e) => {
+    if(e.key === "Control") { svg.on('.zoom', null); }
   });
 
   shouldGenerateAsPNG = false;

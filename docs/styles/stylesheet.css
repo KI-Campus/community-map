@@ -11,7 +11,7 @@ path:hover {
 .tooltip {
   width: 230px;
   padding: 7px;
-  border-radius: 2px;
+  border-radius: 5px;
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
@@ -52,6 +52,7 @@ path:hover {
   padding: 4px 8px;
   margin-bottom: 0px;
   width: 200px;
+  border-radius: 5px;
 }
 
 .switch {
@@ -142,6 +143,11 @@ td {
   margin: 2px;
   font-size: 14px;
   font-weight: normal;
+}
+
+.zoominSpan {
+  font-size: small;
+  padding: 1rem;
 }
 
 /* mobile responsiveness */
