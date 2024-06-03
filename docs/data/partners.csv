@@ -1,154 +1,106 @@
-land,city,name,category,lat,lon,url,partner_since,person
-Nordrhein-Westfalen,Witten,Universität Witten/Herdecke,Lehr-Fellowship,51443.0,7353.0,https://ki-campus.org/fellowships,,Prof. Dr. phil. Daniela Schmitz
-Hessen,Wiesbaden,Hochschule RheinMain,KI-Campus-Original ,50078.0,8239.0,https://ki-campus.org/courses/sprachassistenzen-hochschule,,
-Hessen,Wiesbaden,eGov-Campus,Partner,50078.0,8239.0,,,
-Österreich,Wien,Universität Wien,Lehr-Fellowship,48208.0,16371.0,https://ki-campus.org/fellowships,,
-Österreich,Wien,Universität Wien,Lehr-Fellowship,48208.0,16371.0,https://ki-campus.org/fellowships,,
-Baden-Württemberg,Stuttgart,DHBW Stuttgart,KI-Campus-Original ,48775.0,9182.0,https://ki-campus.org/courses/viskik-dhbw,,
-Baden-Württemberg,Stuttgart,Landesärztekammer Baden-Württemberg (LÄK BW),KI-Campus-Original ,48775.0,9182.0,https://ki-campus.org/courses/drmedki_anwendungen_cme,,
-Baden-Württemberg,Stuttgart,Mercedes Benz AG,KI-Campus-Original ,48775.0,9182.0,https://ki-campus.org/courses/einfuehrungki2020,,
-Baden-Württemberg,Stuttgart,Universität Hohenheim,KI-Campus-Original ,48775.0,9182.0,,,
-Baden-Württemberg,Stuttgart,Universität Stuttgart,KI-Campus-Original ,48775.0,9182.0,https://ki-campus.org/courses/aivet-um-2021,,
-Baden-Württemberg,Stuttgart,Mercedes-Benz Fonds,Partner,48775.0,9182.0,Projekte | KI-Campus,,
-Baden-Württemberg,Sigmaringen,Hochschule Albstadt-Sigmaringen,Lehr-Fellowship,48086.0,9214.0,https://ki-campus.org/fellowship-2021?locale=en,,"Prof. Dr. Maximilian Wolf, Prof. Dr. Stefan Ruf"
-Nordrhein-Westfalen,Sankt Augustin,Fraunhofer IAIS,KI-Campus-Original ,50769.0,7187.0,https://ki-campus.org/courses/kischule,,
-Saarland,Saarbrücken ,DFKI,KI-Campus-Original ,49238.0,6997.0,https://ki-campus.org/foundationsai,,
-Saarland,Saarbrücken ,Universität des Saarlandes,KI-Campus-Original ,49238.0,6997.0,https://ki-campus.org/menschmaschine,,
-Saarland,Saarbrücken ,DFKI,Partner,49238.0,6997.0,https://ki-campus.org/about,,
-Saarland,Saarbrücken ,NEOCOSMO,Partner,49238.0,6997.0,https://ki-campus.org/about,,
-Saarland,Saarbrücken,Universität des Saarlandes,Forschungskolleg-Fellowship,49238.0,6997.0,https://ki-campus.org/forschungskolleg,,Dr. Mahsa Vali Zadeh
-Saarland,Saar ,HTW Saar,Forschungskolleg-Fellowship,49396.0,7023.0,https://ki-campus.org/fellowships,,
-Bayern,Pullach im Isartal,Parmenides Foundation,KI-Campus-Original ,48057.0,11519.0,https://www.ki-campus.org/courses/KI_Ethik_I,,
-Brandenburg,Potsdam,Hasso-Plattner-Institut,Partner,52390.0,13064.0,About us | KI-Campus,,
-Baden-Württemberg,Pforzheim,Hochschule Pforzheim,Lehr-Fellowship,48892.0,8694.0,https://ki-campus.org/fellowship-2021?locale=en,,Dagmar Korinthenberg
-Nordrhein-Westfalen,Paderborn ,Universität Paderborn ,KI-Campus-Original ,51718.0,8757.0,https://ki-campus.org/courses/baeumediy-upb2021,,
-Nordrhein-Westfalen,Paderborn ,Universität Paderborn ,Lehr-Fellowship,51718.0,8757.0,https://ki-campus.org/node/648,,Prof. Dr. Ilka Mindt 
-Niedersachsen ,Osnabrück,GesundheitsCampus Osnabrück,KI-Campus-Original ,52279.0,8047.0,https://ki-campus.org/kigesundheit,,
-Nordrhein-Westfalen,Münster,FH Münster,KI-Campus-Original ,51960.0,7626.0,https://ki-campus.org/courses/botki-fhm2021,,
-Bayern,München,Technische Universität München,Forschungskolleg-Fellowship,48135.0,11582.0,https://ki-campus.org/forschungskolleg,,Altus Viljoen
-Bayern,München,TU München,Forschungskolleg-Fellowship,48135.0,11582.0,https://ki-campus.org/fellowships,,
-Bayern,München,TU München,KI-Campus-Original ,48135.0,11582.0,https://ki-campus.org/courses/GenAI-im-Studium,,
-Bayern,München,Universität München,KI-Campus-Original ,48135.0,11582.0,https://ki-campus.org/courses/KI_Ethik_I,,
-Bayern,München,UnternehmerTUM / appliedAI-Initiative,KI-Campus-Original ,48135.0,11582.0,https://www.ki-campus.org/courses/einfuehrungki2020,,
-Bayern,München,Klinikum rechts der Isar der TU München,Lehr-Fellowship,48135.0,11582.0,https://ki-campus.org/fellowships,,PD Dr. Dr. Alexander Zink
-Bayern,München,appliedAI,Partner,48135.0,11582.0,https://ki-campus.org/courses/einfuehrungki2020,,
-Nordrhein-Westfalen,Mülheim an der Ruhr,Hochschule Ruhr West,Lehr-Fellowship,51418.0,6884.0,https://ki-campus.org/node/648,,"Prof. Dr. Jens Allmer, Prof. Dr. Andreas Hennig"
-Baden-Württemberg,Mannheim,Universität Mannheim,Forschungskolleg-Fellowship,49487.0,8466.0,https://ki-campus.org/fellowships,,
-Baden-Württemberg,Mannheim,Universität Mannheim ,KI-Campus-Original ,49487.0,8466.0,https://ki-campus.org/courses/aivet-um-2021,,
-Baden-Württemberg,Mannheim,Universtität Mannheim,Lehr-Fellowship,49487.0,8466.0,https://ki-campus.org/forschungskolleg,,Marc Egloffstein
-Rheinland- Pfalz,Mainz,Hochschule Mainz,Lehr-Fellowship,49992.0,8247.0,https://ki-campus.org/fellowships,,Matthias Brunnbauer
-Sachsen-Anhalt,Magdeburg,Universität Magdeburg,Forschungskolleg-Fellowship,52120.0,11627.0,https://ki-campus.org/forschungskolleg,,Johannes Schleiß
-Sachsen-Anhalt,Magdeburg,Universität Magdeburg,Forschungskolleg-Fellowship,52120.0,11627.0,,,
-Sachsen-Anhalt,Magdeburg,Universität Magdeburg,Lehr-Fellowship,52120.0,11627.0,https://ki-campus.org/fellowship-2021?locale=en,,"Prof. Dr.-Ing. Sebastian Stober, Johannes Schleiß"
-Niederlande,Maastricht,European MOOC Consortium (EMC),Partner,50851.0,5691.0,KI-Campus wird Mitglied im European MOOC Consortium | KI-Campus,,
-Niedersachsen ,Lüneburg,Leuphana Universität Lüneburg,Forschungskolleg-Fellowship,53247.0,10416.0,https://ki-campus.org/forschungskolleg,,Prof. Dr. Dana-Kristin Mah
-Schleswig-Holstein ,Lübeck,MACH,KI-Campus-Original ,53865.0,10686.0,https://ki-campus.org/courses/kioev-ul2021,,
-Schleswig-Holstein ,Lübeck,Universität zu Lübeck,KI-Campus-Original ,53865.0,10686.0,https://ki-campus.org/courses/kioev-ul2021,,
-Sachsen ,Leipzig,Universität Leipzig,KI-Campus-Original ,51339.0,12373.0,https://ki-campus.org/courses/wwweki,,
-Sachsen ,Leipzig,Universität Leipzig,Lehr-Fellowship,51339.0,12373.0,https://ki-campus.org/node/648,,"Prof. Dr. Roland Happ, Jacqueline Marie-Charlotte Schmidt"
-Brandenburg,Königs Wusterhausen,Landesakademie für öffentliche Verwaltung Brandenburg (LakÖV),KI-Campus-Original ,52295.0,13622.0,https://ki-campus.org/courses/kioev-ul2021,,
-Nordrhein-Westfalen,Köln,Technische Hochschule Köln,Forschungskolleg-Fellowship,50937.0,6960.0,https://ki-campus.org/forschungskolleg,,Katharina Bata
-Nordrhein-Westfalen,Köln,eco - Verband der Internetwirtschaft e.V,KI-Campus-Original ,50937.0,6960.0,https://ki-campus.org/courses/ki-im-techservice,,
-Nordrhein-Westfalen,Köln,TH Köln,KI-Campus-Original ,50937.0,6960.0,https://ki-campus.org/courses/dali-basis-THK2021,,
-Nordrhein-Westfalen,Köln,TH Köln,Lehr-Fellowship,50937.0,6960.0,https://ki-campus.org/node/648,,"Prof. Dr. Angela Schmitz, Katharina Bata"
-Nordrhein-Westfalen,Köln,Universität Köln,Lehr-Fellowship,50937.0,6960.0,https://ki-campus.org/fellowship-2021?locale=en,,"Dr. Claes Neuefeind, Timothée Schmude"
-Schleswig-Holstein ,Kiel,Duale Hochschule Schleswig-Holstein,Lehr-Fellowship,54323.0,10122.0,https://ki-campus.org/fellowships,,Prof. Dr. Malte Prieß
-Schleswig-Holstein ,Kiel,VK:KIWA,Partner,54323.0,10122.0,,,
-Bayern,Kempten,Hochschule Kempten,Ki-Campus-Original ,47728.0,10315.0,https://ki-campus.org/courses/conversational-ai,,
-Hessen,Kassel,Universität Kassel,Forschungskolleg-Fellowship,51312.0,9479.0,https://ki-campus.org/forschungskolleg,,Nils Knoth
-Hessen,Kassel,Universität Kassel,Forschungskolleg-Fellowship,51312.0,9479.0,https://ki-campus.org/fellowships,,
-Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Forschungskolleg-Fellowship,49006.0,8403.0,https://ki-campus.org/forschungskolleg,,Dr. Martin Lindner
-Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Forschungskolleg-Fellowship,49006.0,8403.0,https://ki-campus.org/forschungskolleg,,Emily Rauch
-Baden-Württemberg,Karlsruhe,KIT,KI-Campus-Original ,49006.0,8403.0,https://ki-campus.org/amalea,,
-Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Lehr-Fellowship,49006.0,8403.0,https://ki-campus.org/fellowship-2021?locale=en,,Prof. Dr. Torsten Harms
-Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Partner,49006.0,8403.0,https://ki-campus.org/about,,
-Rheinland- Pfalz,Kaiserslautern,TU Kaiserslautern,KI-Campus-Original ,49440.0,7.769,https://ki-campus.org/courses/data2teach,,
-Rheinland- Pfalz,Kaiserslautern,TU Kaiserslautern,Lehr-Fellowship,49440.0,7.769,https://ki-campus.org/fellowships,,"Dr. rer. nat. Carlo Dindorf, Eva Bartaguiz"
-Bayern,Ingolstadt,KU Eichstätt-Ingolstadt,Lehr-Fellowship,48766.0,11422.0,https://ki-campus.org/fellowships,,
-Bayern,Ingolstadt,TH Ingolstadt,Lehr-Fellowship,48766.0,11422.0,https://ki-campus.org/fellowship-2021?locale=en,,Prof. Dr.-Ing. Jörn Schlingensiepen 
-Baden-Württemberg,Heilbronn,DHBW Heilbronn,Forschungskolleg-Fellowship,49142.0,9210.0,https://ki-campus.org/forschungskolleg,,Jochen Ehrenreich
-Baden-Württemberg,Heilbronn,DHBW Heilbronn,Forschungskolleg-Fellowship,49142.0,9210.0,https://ki-campus.org/forschungskolleg,,Natalie Dambier
-Baden-Württemberg,Heilbronn,DHBW Heilbronn,KI-Campus-Original ,49142.0,9210.0,https://ki-campus.org/courses/ki-im-Handel,,
-Baden-Württemberg,Heilbronn,Hochschule Heilbronn,KI-Campus-Original ,49142.0,9210.0,https://ki-campus.org/courses/sozialverantwortliche_ki_gestaltung,,Prof. Dr. Nicola Marsden
-Baden-Württemberg,Heilbronn,TUM Campus Heilbronn,KI-Campus-Original ,49142.0,9210.0,https://ki-campus.org/courses/ki-anwendungsfaelle,,
-Baden-Württemberg,Heilbronn,DHBW Heilbronn,Lehr-Fellowship,49142.0,9210.0,https://ki-campus.org/fellowship-2021?locale=en,2019-10-01,Prof. Dr. Anke Hutzschenreuter
-Baden-Württemberg,Heilbronn,Hochschule Heilbronn,Lehr-Fellowship,49142.0,9210.0,https://ki-campus.org/fellowship-2021?locale=en,,"Prof. Dr. Nicola Marsden, Dr. Kerstin Raudonat"
-Baden-Württemberg,Heilbronn,Hochschule Heilbronn,Lehr-Fellowship,49142.0,9210.0,https://ki-campus.org/fellowship-2021?locale=en,,Prof. Dr. Nicole Ondrusch
-Baden-Württemberg,Heilbronn,DHBW Heilbronn,Partner,49142.0,9210.0,https://ki-campus.org/about,,
-Baden-Württemberg,Heilbronn,Dieter Schwarz Stiftung,Partner,49142.0,9210.0,https://ki-campus.org/hub-bw,,
-Baden-Württemberg,Heilbronn,Fraunhofer IAO / KODIS,Partner,49142.0,9210.0,https://ki-campus.org/hub-bw,,
-Baden-Württemberg,Heilbronn,Hochschule Heilbronn,Partner,49142.0,9210.0,https://ki-campus.org/hub-bw,,
-Baden-Württemberg,Heilbronn,TUM Campus Heilbronn,Partner,49142.0,9210.0,https://ki-campus.org/hub-bw,,
-Baden-Württemberg,Heidelberg,PH Heidelberg ,KI-Campus-Original ,49398.0,8672.0,https://ki-campus.org/courses/data2teach,,
-Niedersachsen ,Hannover,Universität Hannover,KI-Campus-Original ,52375.0,9732.0,https://ki-campus.org/courses/automl-luh2021,,
-Hamburg,Hamburg,Universität Hamburg,Forschungskolleg-Fellowship,53548.0,9987.0,https://ki-campus.org/forschungskolleg,,Prof Dr. Nils Buchholtz
-Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53548.0,9987.0,https://ki-campus.org/fellowships,,"Benedikt Adelmann, Stephan Weiland"
-Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53548.0,9987.0,https://ki-campus.org/node/648,,Prof. Dr. Kerstin Prechel 
-Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53548.0,9987.0,https://ki-campus.org/fellowship-2021?locale=en,,"Prof. Dr. rer. nat. Björn Gehlsen, Prof. Dr. phil. Christian Warneke"
-Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53548.0,9987.0,https://ki-campus.org/fellowships,,
-Hamburg ,Hamburg,Universität Hamburg,Lehr-Fellowship,53548.0,9987.0,https://ki-campus.org/fellowships,,Prof. Dr. Sandra Schulz
-Sachsen ,Halle (Saale),Burg Giebichenstein Kunsthochschule Halle,Lehr-Fellowship,51495.0,11966.0,https://ki-campus.org/node/648,2020-07-01,Simon Maris
-Nordrhein-Westfalen,Hagen,FernUniversität in Hagen,Partner,51367.0,7463.0,About us | KI-Campus,,
-Nordrhein-Westfalen,Hagen,FernUniversität in Hagen,Partner,51367.0,7463.0,https://ki-campus.org/about,,
-Mecklenburg-Vorpommern,Greifswald,Universität Greifswald,Lehr-Fellowship,54086.0,13392.0,https://ki-campus.org/fellowships,,Dr. Holger Muehlan
-Baden-Württemberg,Freiburg (im Breisgau),Universität Freiburg,KI-Campus-Original ,47999.0,7842.0,https://ki-campus.org/courses/automl-luh2021,,
-Baden-Württemberg,Freiburg (im Breisgau),Universität Freiburg,Lehr-Fellowship,47999.0,7842.0,https://ki-campus.org/node/648,,"Prof. Dr. M.Jur.  Boris P. Paal., Niklas Wais"
-Hessen,Frankfurt am Main ,TechQuartier,KI-Campus-Original ,50110.0,8682.0,https://ki-campus.org/courses/introtoai-tud,,
-Hessen,Frankfurt am Main ,Universität Frankfurt,KI-Campus-Original ,50110.0,8682.0,https://ki-campus.org/courses/introtoai-tud,,
-Hessen,Frankfurt am Main ,Universität Frankfurt,Lehr-Fellowship,50110.0,8682.0,https://ki-campus.org/node/648,,"Dr. Julia Mordel, Marc Drognitz"
-Nordrhein-Westfalen,Essen,FOM Hochschule,KI-Campus-Original,51457.0,7022.0,https://ki-campus.org/courses/wwweki,,
-Nordrhein-Westfalen,Essen,Universität Duisburg-Essen,Lehr-Fellowship,51457.0,7022.0,https://ki-campus.org/fellowships,,PD Dr. Derya Gür-Şeker
-Nordrhein-Westfalen,Essen,mmb Institut,Partner,51457.0,7022.0,https://ki-campus.org/about,,
-Nordrhein-Westfalen,Essen,mmb Institut,Partner,51457.0,7022.0,About us | KI-Campus,,
-Nordrhein-Westfalen,Essen,Stifterverband ,Partner,51457.0,7022.0,Projekte | KI-Campus,,
-Bayern,Erlangen,Fraunhofer IIS,KI-Campus-Original ,49589.0,11012.0,https://ki-campus.org/courses/erklaerbaresML,,
-Bayern,Erlangen,FAU Erlangen-Nürnberg,Lehr-Fellowship,49589.0,11012.0,https://ki-campus.org/fellowship-2021?locale=en,,"Prof. Dr. Kist, Andreas"
-Bayern,Erlangen,Fraunhofer IIS,Partner,49589.0,11012.0,Beirat (KI-Campus 2.0) | KI-Campus,,
-Thüringen,Erfurt,IU Internationale Hochschule ,KI-Campus-Original ,50984.0,11029.0,https://ki-campus.org/courses/ki-use-cases-iuh,,
-Bayern,Eichstätt,KU Eichstätt-Ingolstadt,Lehr-Fellowship,48891.0,11185.0,https://ki-campus.org/node/648,,"Prof. Dr. Meier, Klaus, Dr. Jonas Schützeneder "
-Nordrhein-Westfalen,Düsseldorf,Universität Düsseldorf,KI-Campus-Original ,51223.0,6782.0,https://ki-campus.org/courses/kifueralle-hhu,,
-Sachsen ,Dresden,TU Dresden ,KI-Campus-Original ,51050.0,13737.0,https://ki-campus.org/courses/ganzheitlicheki-prozessinformatik,,
-Hessen,Darmstadt,Technische Universität Darmstadt,Forschungskolleg-Fellowship,49872.0,8651.0,https://ki-campus.org/forschungskolleg,,Marc Pinski
-Hessen,Darmstadt,TU Darmstadt,Forschungskolleg-Fellowship,49872.0,8651.0,https://ki-campus.org/fellowships,,
-Hessen,Darmstadt,TU Darmstadt,KI-Campus-Original ,49872.0,8651.0,https://www.ki-campus.org/courses/moocrobot-tud2021,,
-Bremen,Bremen,Universität Bremen ,Lehr-Fellowship,53079.0,8801.0,https://ki-campus.org/node/648,,Dennis Redeker
-Nordrhein-Westfalen,Bonn,Universitätsklinikum Bonn,Forschungskolleg-Fellowship,50737.0,7098.0,https://ki-campus.org/forschungskolleg,,Matthias Laupichler
-Nordrhein-Westfalen,Bonn,Universitätsklinikum Bonn ,Forschungskolleg-Fellowship,50737.0,7098.0,https://ki-campus.org/fellowships,,
-Nordrhein-Westfalen,Bonn,Deutscher Volkshochschul-Verband,KI-Campus-Original ,50737.0,7098.0,https://www.ki-campus.org/datenfluss,,
-Nordrhein-Westfalen,Bonn,Universitätsklinikum Bonn,KI-Campus-Original ,50737.0,7098.0,https://www.ki-campus.org/courses/ki-laura-ukb2022,,
-Nordrhein-Westfalen,Bonn,atingi,Partner,50737.0,7098.0,,,
-Nordrhein-Westfalen,Bielefeld,Universität Bielefeld,KI-Campus-Original ,52030.0,8532.0,https://ki-campus.org/courses/Datenanalyse-unibi2021,,
-Luxemburg ,Bertrange,Cap4 Lab,KI-Campus-Original ,49610.0,6050.0,https://ki-campus.org/courses/mlindustrial-uol2021,,
-Berlin ,Berlin ,Charité - Universitätsmedizin Berlin ,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/drmedki_grundlagen_cme,,
-Berlin ,Berlin ,DFKI,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/kileadership-dfki2022,,
-Berlin ,Berlin ,FU Berlin ,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/learning-analytics,,
-Berlin ,Berlin ,HU Berlin ,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/kileadership-dfki2022,,
-Berlin ,Berlin ,Huawei,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/practisingai,,
-Berlin ,Berlin ,HWR Berlin,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/daethik?,,
-Berlin ,Berlin ,IMAGINARY,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/explorables-schule,,
-Berlin ,Berlin ,Junge Tüftler*innen,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/kischule,,
-Berlin ,Berlin ,Kiron Open Higher Education,KI-Campus-Original ,52520.0,13405.0,https://ki-campus.org/courses/aiquestions2021,,
-Berlin ,Berlin ,FU Berlin,Lehr-Fellowship,52520.0,13405.0,https://ki-campus.org/node/648,,Claudia Ruhland 
-Berlin ,Berlin ,HU Berlin ,Lehr-Fellowship,52520.0,13405.0,https://ki-campus.org/fellowships,,Dr. Ole Engel
-Berlin ,Berlin ,HU Berlin ,Lehr-Fellowship,52520.0,13405.0,https://ki-campus.org/node/648,,PD Dr. habil. Eleonore Kalisch
-Berlin ,Berlin ,HU Berlin ,Lehr-Fellowship,52520.0,13405.0,https://ki-campus.org/fellowships,,
-Berlin ,Berlin ,TU Berlin ,Lehr-Fellowship,52520.0,13405.0,https://ki-campus.org/fellowship-2021?locale=en,,"Corvin Jaedicke, Fabian Seipel"
-Berlin ,Berlin ,Charité - Universitätsmedizin Berlin,Partner,52520.0,13405.0,https://ki-campus.org/about,,
-Berlin ,Berlin ,DFKI,Partner,52520.0,13405.0,https://ki-campus.org/about,,
-Berlin ,Berlin ,HU Berlin ,Partner,52520.0,13405.0,https://ki-campus.org/about,,
-Berlin ,Berlin ,Stifterverband,Partner,52520.0,13405.0,About us | KI-Campus,,
-Berlin,Berlin,Stifterverband,Forschungskolleg-Fellowship,52520.0,13405.0,https://ki-campus.org/forschungskolleg,,Florian Rampelt
-Berlin,Berlin,iRights.Lab,KI-Campus-Original,52520.0,13405.0,https://ki-campus.org/ki-in-meinem-alltag/unterrichtsmaterial,,
-Berlin,Berlin,AI4Democracy,Partner,52520.0,13405.0,AI4Democracy - Grundlagen zu KI in der Demokratie | KI-Campus,,
-Berlin,Berlin,Gesellschaft für Informatik (GI),Partner,52520.0,13405.0,https://ki-campus.org/beirat,,
-Berlin,Berlin,GovTech Campus Deutschland,Partner,52520.0,13405.0,,,
-Berlin,Berlin,KI Bundesverband,Partner,52520.0,13405.0,,,
-Berlin ,Berlin,Stifterverband ,Partner,52520.0,13405.0,Projekte | KI-Campus,,
-Luxemburg,Belval Esch-sur-Alzette,University of Luxembourg Competence Centre,KI-Campus-Original,49502.0,5972.0,https://ki-campus.org/courses/mlindustrial-uol2021,,
-Schweiz,Basel ,Universität Basel,Partner,47559.0,7588.0,https://ki-campus.org/beirat,,
-Bayern,Bamberg,Universität Bamberg,KI-Campus-Original ,49898.0,10902.0,https://ki-campus.org/courses/dlgrundschule,,
-Bayern,Aschaffenburg,TH Aschaffenburg,Lehr-Fellowship,49980.0,49980.0,https://ki-campus.org/fellowships,,Prof. Dr. Sabrina Schork
-Nordrhein-Westfalen,Aachen,RWTH Aachen,Forschungskolleg-Fellowship,50.775,6.083,https://ki-campus.org/forschungskolleg,,Marie Decker
-Nordrhein-Westfalen,Aachen,RWTH Aachen,Lehr-Fellowship,50.775,6.083,https://ki-campus.org/fellowships,,Jonas Klingebiel
-Nordrhein-Westfalen,Aachen,RWTH Aachen,Lehr-Fellowship,50.775,6.083,https://ki-campus.org/node/648,,Prof. Ph.D. Florian Wellmann
-Nordrhein-Westfalen,Aachen,RWTH Aachen,Lehr-Fellowship,50.775,6.083,https://ki-campus.org/fellowships,,
+land,city,name,category,lat,lon,url,partner_since
+Berlin ,Berlin ,Charité - Universitätsmedizin Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/medizin,2020-07-01
+Berlin ,Berlin ,DFKI,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/machine-learning,2019-10-01
+Berlin ,Berlin ,HWR Berlin,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/daethik,2020-07-01
+Berlin ,Berlin ,Huawei,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/practisingai,
+Berlin ,Berlin ,HU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/hub-berlin,
+Berlin ,Berlin ,Junge Tüftler*innen,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/schule,
+Berlin ,Berlin ,Kiron Open Higher Education,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/aiquestions2021,
+Berlin ,Berlin ,TU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/nlp,
+Berlin ,Berlin ,Charité - Universitätsmedizin Berlin,Partner,52.517,13.408,https://ki-campus.org/courses/drmedki_basics,
+Berlin ,Berlin ,HU Berlin ,Partner,52.517,13.408,https://ki-campus.org/hub-berlin,
+Berlin ,Berlin ,HWR Berlin,Partner,52.517,13.408,https://ki-campus.org/courses/daethik,
+Berlin ,Berlin ,FU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/learning-analytics,
+Berlin ,Berlin ,Imaginary,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/explorables-schule,
+Berlin ,Berlin ,HU Berlin ,Lehr-Fellowship,52.517,13.408,https://ki-campus.org/hub-berlin,
+Berlin ,Berlin ,FU Berlin,Lehr-Fellowship,52.517,13.408,https://ki-campus.org/courses/learning-analytics,
+Berlin ,Berlin ,TU Berlin ,Lehr-Fellowship,52.517,13.408,https://ki-campus.org/courses/nlp,
+Berlin ,Berlin ,HU Berlin ,Lehr-Fellowship,52.517,13.408,https://ki-campus.org/hub-berlin?locale=de,
+Berlin ,Berlin ,DFKI,Partner,52.517,13.408,https://ki-campus.org/about,
+Berlin ,Berlin ,Stifterverband,Partner,52.517,13.408,https://ki-campus.org/about,
+Brandenburg,Potsdam,Hasso-Plattner-Institut,Partner,52.396,13.061,https://ki-campus.org/about,
+Sachsen ,Dresden,TU Dresden ,KI-Campus-Original ,51.049,13.738,https://ki-campus.org/courses/ganzheitlicheki-prozessinformatik,
+Sachsen ,Leipzig,Universität Leipzig,Lehr-Fellowship,51.34,12.375,https://ki-campus.org/courses/wwweki,
+Sachsen ,Leipzig,Universität Leipzig,KI-Campus-Original ,51.34,12.375,https://ki-campus.org/courses/wwweki,
+Sachsen ,Halle (Saale),Burg Giebichenstein Kunsthochschule Halle,Lehr-Fellowship,51.483,11.97,https://ki-campus.org/fellowships,
+Sachsen-Anhalt,Magdeburg,Universität Magdeburg,Lehr-Fellowship,52.133,11.617,https://ki-campus.org/fellowships,
+Thüringen,Erfurt,IU Internationale Hochschule ,KI-Campus-Original ,50.978,11.029,https://www.ki-campus.org/courses/ki-use-cases-iuh,
+Bayern,München,LMU München,KI-Campus-Original ,48.14,11.574,https://www.ki-campus.org/courses/ki-anwendungsfaelle,
+Bayern,München,UnternehmerTUM / appliedAI-Initiative,KI-Campus-Original ,48.14,11.574,https://www.ki-campus.org/courses/einfuehrungki2020,
+Bayern,Ingolstadt,KU Eichstätt-Ingolstadt,Lehr-Fellowship,48.764,11.424,https://www.ki-campus.org/podcasts/ki-im-journalismus,
+Bayern,Eichstätt,KU Eichstätt-Ingolstadt,Lehr-Fellowship,48.892,11.184,https://www.ki-campus.org/podcasts/ki-im-journalismus,
+Bayern,Erlangen,Fraunhofer IIS,KI-Campus-Original ,49.596,11.004,https://www.ki-campus.org/courses/erklaerbareki2020,
+Bayern,Kempten,Hochschule Kempten,Ki-Campus-Original ,47.733,10.317,https://ki-campus.org/courses/conversational-ai,
+Bayern,Pullach im Isartal,Parmenides Foundation,KI-Campus-Original ,48.059,11.513,https://ki-campus.org/courses/KI_Ethik_I,
+Bayern,Erlangen,FAU Erlangen-Nürnberg,Lehr-Fellowship,49.596,11.004,https://ki-campus.org/fellowships,
+Bayern,Ingolstadt,TH Ingolstadt,Lehr-Fellowship,48.764,11.424,https://ki-campus.org/fellowships,
+Bayern,Aschaffenburg,TH Aschaffenburg,Lehr-Fellowship,49.977,9.148,https://ki-campus.org/fellowships,
+Bayern,München,Klinikum rechts der Isar der TU München,Lehr-Fellowship,48.135,11.582,https://ki-campus.org/fellowships,
+Bayern,Bamberg,Universität Bamberg,KI-Campus-Original ,49.892,10.892,https://ki-campus.org/courses/dlgrundschule,
+Baden-Württemberg,Freiburg (im Breisgau),Universität Freiburg,KI-Campus-Original ,47.995,7.85,https://ki-campus.org/courses/automl-luh2021,
+Baden-Württemberg,Stuttgart,Universität Stuttgart,KI-Campus-Original ,48.776,9.183,https://ki-campus.org/courses/aivet-um-2021,
+Baden-Württemberg,Mannheim,Universität Mannheim ,KI-Campus-Original ,49.488,8.466,https://ki-campus.org/courses/aivet-um-2021,
+Baden-Württemberg,Heidelberg,Universität Heidelberg,KI-Campus-Original ,49.41,8.697,https://ki-campus.org/hub-bw,
+Baden-Württemberg,Heidelberg,PH Heidelberg ,KI-Campus-Original ,49.41,8.697,https://ki-campus.org/courses/data2teach,
+Baden-Württemberg,Albstadt,"Hochschule Albstadt-
+Sigmaringen",KI-Campus-Original ,48.231,9.032,https://ki-campus.org/hub-bw,
+Baden-Württemberg,Sigmaringen,"Hochschule Albstadt-
+Sigmaringen",KI-Campus-Original ,48.086,9.215,https://ki-campus.org/hub-bw,
+Baden-Württemberg,Stuttgart,Universität Stuttgart,KI-Campus-Original ,48.776,9.183,https://ki-campus.org/courses/aivet-um-2021,
+Baden-Württemberg,Karlsruhe,KIT,KI-Campus-Original ,49.007,8.404,https://ki-campus.org/courses/practisingai,
+Baden-Württemberg,Heilbronn,Hochschule Heilbronn,Lehr-Fellowship,49.142,9.222,https://ki-campus.org/courses/sozialverantwortliche_ki_gestaltung,
+Baden-Württemberg,Heilbronn,Hochschule Heilbronn,Partner,49.142,9.222,https://ki-campus.org/courses/sozialverantwortliche_ki_gestaltung,
+Baden-Württemberg,Pforzheim,Hochschule Pforzheim,Lehr-Fellowship,48.89,8.702,https://ki-campus.org/fellowships,
+Baden-Württemberg,Heilbronn,DHBW Heilbronn,Lehr-Fellowship,49.142,9.222,https://ki-campus.org/courses/ki-im-Handel,
+Baden-Württemberg,Heilbronn,DHBW Heilbronn,Partner,49.142,9.222,https://ki-campus.org/courses/ki-im-Handel,
+Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Lehr-Fellowship,49.014,8.404,https://ki-campus.org/fellowships,
+Baden-Württemberg,Karlsruhe,DHBW Karlsruhe,Partner,49.014,8.404,https://ki-campus.org/about,
+Baden-Württemberg,Heilbronn,TUM Campus Heilbronn,Partner,49.142,9.222,https://ki-campus.org/about,
+Baden-Württemberg,Heilbronn,Fraunhofer IAO / KODIS,Partner,49.142,9.222,https://ki-campus.org/about,
+Baden-Württemberg,Heilbronn,Dieter Schwarz Stiftung,Partner,49.142,9.222,https://ki-campus.org/about,
+Baden-Württemberg,Heilbronn,KI-Stiftung Heilbronn,Partner,49.142,9.222,https://ki-campus.org/about,
+Saarland,Saarbrücken ,DFKI,KI-Campus-Original ,49.233,6.996,https://ki-campus.org/courses/kilectures2021,
+Saarland,Saarbrücken ,Universität des Saarlandes,KI-Campus-Original ,49.233,6.996,https://ki-campus.org/foundationsai,
+Saarland,Saarbrücken ,DFKI,Partner,49.233,6.996,https://ki-campus.org/about,
+Saarland,Saarbrücken ,NEOCOSMO,Partner,49.233,6.996,https://ki-campus.org/about,
+Rheinland- Pfalz,Kaiserslautern,TU Kaiserslautern,KI-Campus-Original ,49.445,7.769,https://ki-campus.org/courses/data2teach,
+Rheinland- Pfalz,Kaiserslautern,TU Kaiserslautern,Lehr-Fellowship,49.445,7.769,https://ki-campus.org/courses/data2teach,
+Rheinland- Pfalz,Mainz,Hochschule Mainz,Lehr-Fellowship,50.0,8.271,https://ki-campus.org/fellowships,
+Luxemburg ,Luxemburg (Stadt),Ministerium für Hochschulwesen und Forschung Luxemburg ,Partner,49.611,6.131,https://ki-campus.org/about,
+Hessen,Frankfurt am Main ,TechQuartier,KI-Campus-Original ,50.111,8.682,https://ki-campus.org/courses/introtoai-tud,
+Hessen,Frankfurt am Main ,Universität Frankfurt,KI-Campus-Original ,50.111,8.682,https://ki-campus.org/courses/introtoai-tud,
+Hessen,Frankfurt am Main ,Universität Frankfurt,Lehr-Fellowship,50.111,8.682,https://ki-campus.org/courses/introtoai-tud,
+Hessen,Darmstadt,TU Darmstadt,KI-Campus-Original ,49.873,8.651,https://ki-campus.org/courses/moocrobot-tud2021,
+Hessen,Wiesbaden,eGov-Campus,Partner,50.083,8.24,https://ki-campus.org/about,
+Nordrhein-Westfalen,Mülheim an der Ruhr,Hochschule Ruhr West,Lehr-Fellowship,51.433,6.883,https://ki-campus.org/fellowships,
+Nordrhein-Westfalen,Köln,TH Köln,Lehr-Fellowship,50.938,6.957,https://ki-campus.org/courses/dali-datamining-THK2021,
+Nordrhein-Westfalen,Köln,TH Köln,KI-Campus-Original ,50.938,6.957,https://ki-campus.org/courses/dali-sensoren-THK2021,
+Nordrhein-Westfalen,Bonn,Universitätsklinikum Bonn,KI-Campus-Original ,50.734,7.1,https://ki-campus.org/courses/ki-laura-ukb2022,
+Nordrhein-Westfalen,Aachen,RWTH Aachen,Lehr-Fellowship,50.775,6.084,https://ki-campus.org/courses/kischule,
+Nordrhein-Westfalen,Sankt Augustin,Fraunhofer IAIS,KI-Campus-Original ,50.77,7.187,https://ki-campus.org/courses/datenschule,
+Nordrhein-Westfalen,Bonn,Deutscher Volkshochschul-Verband,KI-Campus-Original ,50.734,7.1,https://ki-campus.org/datenfluss,
+Nordrhein-Westfalen,Paderborn ,Universität Paderborn ,KI-Campus-Original ,51.719,8.757,https://ki-campus.org/courses/baeumediy-upb2021,
+Nordrhein-Westfalen,Paderborn ,Universität Paderborn ,Lehr-Fellowship,51.719,8.757,https://ki-campus.org/courses/baeumediy-upb2021,
+Nordrhein-Westfalen,Münster,FH Münster,KI-Campus-Original ,51.963,7.629,https://ki-campus.org/courses/botki-fhm2021,
+Nordrhein-Westfalen,Bielefeld,Universität Bielefeld,KI-Campus-Original ,52.022,8.535,https://ki-campus.org/courses/Datenanalyse-unibi2021,
+Nordrhein-Westfalen,Bielefeld,Universität Bielefeld,KI-Campus-Original ,52.022,8.535,https://ki-campus.org/courses/Datenanalyse-unibi2021,
+Nordrhein-Westfalen,Köln,Universität zu Köln,Lehr-Fellowship,50.938,6.957,https://ki-campus.org/fellowships,
+Nordrhein-Westfalen,Aachen,RWTH Aachen,Lehr-Fellowship,50.775,6.084,https://ki-campus.org/fellowships,
+Nordrhein-Westfalen,Witten,Universität Witten/Herdecke,Lehr-Fellowship,51.433,7.333,https://ki-campus.org/fellowships,
+Nordrhein-Westfalen,Essen,Universität Duisburg-Essen,Lehr-Fellowship,51.458,7.014,https://ki-campus.org/fellowships,
+Nordrhein-Westfalen,Hagen,FernUniversität in Hagen,Partner,51.359,7.475,https://ki-campus.org/courses/kilectures2021,
+Nordrhein-Westfalen,Essen,mmb Institut,Partner,51.458,7.014,https://ki-campus.org/about,
+Niedersachsen ,Osnabrück,GesundheitsCampus Osnabrück,KI-Campus-Original ,52.279,8.043,https://ki-campus.org/kigesundheit,
+Niedersachsen ,Hannover,Universität Hannover,KI-Campus-Original ,52.374,9.739,https://ki-campus.org/courses/automl-luh2021,
+Bremen,Bremen,Universität Bremen ,KI-Campus-Original ,53.076,8.807,https://ki-campus.org/node/47,
+Bremen,Bremen,Universität Bremen ,Lehr-Fellowship,53.076,8.807,https://ki-campus.org/fellowships,
+Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53.551,9.993,https://ki-campus.org/fellowships,
+Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53.551,9.993,https://ki-campus.org/fellowships,
+Hamburg ,Hamburg,HAW Hamburg,Lehr-Fellowship,53.551,9.993,https://ki-campus.org/fellowships,
+Hamburg ,Hamburg,Universität Hamburg,Lehr-Fellowship,53.551,9.993,https://ki-campus.org/fellowships,
+Schleswig-Holstein ,Lübeck,MACH,KI-Campus-Original ,53.868,10.685,https://ki-campus.org/courses/kioev-ul2021,
+Schleswig-Holstein ,Kiel,"Ministerium für Allgemeine und Berufliche Bildung, Wissenschaft, Forschung und Kultur Schleswig-Holstein ",Partner,54.323,10.14,https://ki-campus.org/about,
+Schleswig-Holstein ,Kiel,Duale Hochschule Schleswig-Holstein,Lehr-Fellowship,54.323,10.14,https://ki-campus.org/fellowships,
+Schleswig-Holstein ,Lübeck,Universität zu Lübeck,KI-Campus-Original ,53.868,10.685,https://ki-campus.org/courses/chabodoc,
+Mecklenburg-Vorpommern,Greifswald,Universität Greifswald,Lehr-Fellowship,54.096,13.381,https://ki-campus.org/fellowships,
+Österreich,Wien,Universität Wien,Lehr-Fellowship,48.208,16.373,https://ki-campus.org/fellowships,
