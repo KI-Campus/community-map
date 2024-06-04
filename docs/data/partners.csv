@@ -2,8 +2,8 @@ land,city,name,category,lat,lon,url,partner_since
 Berlin ,Berlin ,Charité - Universitätsmedizin Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/medizin,2020-07-01
 Berlin ,Berlin ,DFKI,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/machine-learning,2019-10-01
 Berlin ,Berlin ,HWR Berlin,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/daethik,2020-07-01
-Berlin ,Berlin ,Huawei,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/practisingai,
-Berlin ,Berlin ,HU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/hub-berlin,
+Berlin ,Berlin ,Huawei,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/practisingai,2020
+Berlin ,Berlin ,HU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/hub-berlin,2023
 Berlin ,Berlin ,Junge Tüftler*innen,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/themen/schule,
 Berlin ,Berlin ,Kiron Open Higher Education,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/aiquestions2021,
 Berlin ,Berlin ,TU Berlin ,KI-Campus-Original ,52.517,13.408,https://ki-campus.org/courses/nlp,
