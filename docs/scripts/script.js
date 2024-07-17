@@ -340,7 +340,7 @@ function addCityLocations(cities) {
           if (window.innerWidth - d3.event.pageX < 130){
             tooltip.style("top", (d3.event.pageY + 20) + "px").style("left", (window.innerWidth - 150) + "px");
           } else {
-            tooltip.style("top", (d3.event.pageY + 20) + "px").style("left", (d3.event.pageX - 3) + "px");
+            tooltip.style("top", (d3.event.pageY + 0) + "px").style("left", (d3.event.pageX - 3) + "px");
           }
           if (d.institutions.length > 10) {
             tooltip.style("height", "35vh");
